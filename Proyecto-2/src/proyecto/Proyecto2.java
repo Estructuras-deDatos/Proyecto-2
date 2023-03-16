@@ -16,10 +16,9 @@ public class Proyecto2 {
     public static void main(String[] args) {
        
         Hash hash = uploadSummary.create_hash();
-        uploadSummary.load_summary(hash);
-        System.out.println(uploadSummary.print_hashS(hash));
-        System.out.println(hash.getCapacity());
         
+        
+        analizeSummary.analyze_summary(uploadSummary.search("Arquitectura referencial para mecanismos de Internacionalización y localización en PHP.", hash));
     }
     
 }
