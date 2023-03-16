@@ -8,6 +8,6 @@ package proyecto;
  *
  * @author andre
  */
-public class holi {
+public class analizeSummary {
     
 }
