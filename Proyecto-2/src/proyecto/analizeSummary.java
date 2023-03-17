@@ -9,6 +9,10 @@ import java.awt.Font;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 import proyecto.interfaces.windowAnalyzeResume;
 
@@ -43,6 +47,7 @@ public class analizeSummary {
         
     }
     public static void hide(){
+        windowAnalyzeResume.problem.setVisible(false);
         windowAnalyzeResume.jLabel5.setVisible(false);
         windowAnalyzeResume.jLabel3.setVisible(false);
         windowAnalyzeResume.jLabel4.setVisible(false);
@@ -87,11 +92,11 @@ public class analizeSummary {
         }
         DefaultTableModel model = new DefaultTableModel(row, column);
         windowAnalyzeResume.table.setModel(model);
-        windowAnalyzeResume.table.setAutoResizeMode(5);
         windowAnalyzeResume.table.getTableHeader().setFont(new Font("Trebuchet MS", Font.BOLD, 14));
         windowAnalyzeResume.table.getTableHeader().setBackground(new Color(43,47,181));
         windowAnalyzeResume.table.getTableHeader().setForeground(Color.white);
         windowAnalyzeResume.jScrollPane3.setVisible(true);
+       
     }
     
     public static int search(Hash hash, String key){

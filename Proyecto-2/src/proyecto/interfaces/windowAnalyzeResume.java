@@ -55,6 +55,7 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         sel_title = new javax.swing.JTextArea();
+        problem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -142,17 +143,23 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
         jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane3.setBorder(null);
         jScrollPane3.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setOpaque(false);
 
         table.setBackground(new java.awt.Color(255, 255, 255));
         table.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         table.setForeground(new java.awt.Color(0, 0, 0));
+        table.setAutoscrolls(false);
         table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        table.setFillsViewportHeight(true);
         table.setGridColor(new java.awt.Color(0, 0, 0));
         table.setRowHeight(25);
         table.setRowMargin(1);
         table.setRowSelectionAllowed(false);
+        table.setSelectionBackground(new java.awt.Color(0, 0, 0));
         table.setSelectionForeground(new java.awt.Color(255, 255, 255));
         table.setShowGrid(true);
+        table.setShowHorizontalLines(true);
         jScrollPane3.setViewportView(table);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 330, 180));
@@ -190,6 +197,12 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 410, 80));
 
+        problem.setFont(new java.awt.Font("Trebuchet MS", 3, 12)); // NOI18N
+        problem.setForeground(new java.awt.Color(102, 0, 0));
+        problem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        problem.setText("jLabel6");
+        jPanel1.add(problem, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 290, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         pack();
@@ -201,8 +214,14 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
 
     private void analizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizeActionPerformed
         String title_selected = jList1.getSelectedValue();
+        if(title_selected!=null){
+            problem.setVisible(false);
         selected = uploadSummary.search(title_selected.trim(),windowMain.hash);
-        analizeSummary.analyze_summary(selected);
+        analizeSummary.analyze_summary(selected);}
+        else{
+            problem.setVisible(true);
+            problem.setText("Por favor seleccione una opcion");
+        }
     }//GEN-LAST:event_analizeActionPerformed
 
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
@@ -262,6 +281,7 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    public static javax.swing.JLabel problem;
     private javax.swing.JButton regresar;
     public static javax.swing.JTextArea sel_authors;
     public static javax.swing.JTextArea sel_title;

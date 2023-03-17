@@ -283,7 +283,7 @@ public class uploadSummary {
                     }
                     
                     if(opt==2){
-                        body = aux;
+                        body = split_lines[i];
                     }
                 }
                 if(!authors.isEmpty()&&!body.isEmpty()&&!keyW.isEmpty()){
