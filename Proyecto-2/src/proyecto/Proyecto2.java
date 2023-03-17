@@ -19,6 +19,7 @@ public class Proyecto2 {
        windowMain main = new windowMain();
        
        main.setVisible(true);
+       
     }
     
 }

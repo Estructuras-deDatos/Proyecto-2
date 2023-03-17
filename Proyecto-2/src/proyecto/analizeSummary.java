@@ -4,10 +4,13 @@
  */
 package proyecto;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JFrame;
-import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import proyecto.interfaces.windowAnalyzeResume;
 
 /**
  *
@@ -15,7 +18,18 @@ import javax.swing.JTable;
  */
 public class analizeSummary {
     
+    
+    public static void visualize(Summary sum){
+        windowAnalyzeResume.sel_title.setVisible(true);
+        windowAnalyzeResume.sel_title.setText(uploadSummary.capitalize(sum.getTitle()));
+        windowAnalyzeResume.jLabel3.setVisible(true);
+        windowAnalyzeResume.sel_authors.setText(uploadSummary.array_readable(sum.getAuthors()));
+        windowAnalyzeResume.jLabel4.setVisible(true);
+        windowAnalyzeResume.jLabel5.setVisible(true);
+        
+    }
     public static void analyze_summary(Summary sum){
+        visualize(sum);
         String[] keyWords = sum.getKeyw();
         Hash hash = new Hash(uploadSummary.get_capacity(keyWords.length));
         for (String keyWord : keyWords) {
@@ -24,17 +38,46 @@ public class analizeSummary {
             el[1]= calculate_frequency(keyWord, sum);
             hash.insert(keyWord, el); 
         } 
-        JTable table = tabulate(hash, sum);
-        JFrame jFrame = new JFrame();
-        jFrame.add(table);
-        jFrame.setSize(350, 300);
-        jFrame.setVisible(true);
+        tabulate(hash, sum);
+        
         
     }
+    public static void hide(){
+        windowAnalyzeResume.jLabel5.setVisible(false);
+        windowAnalyzeResume.jLabel3.setVisible(false);
+        windowAnalyzeResume.jLabel4.setVisible(false);
+        windowAnalyzeResume.jScrollPane3.setVisible(false);
+    }
+    public static String[] get_options(Hash hash){
+        String t ="";
+        Summary aux;
+        for(int i=0;i<hash.getCapacity();i++){
+            if(hash.getVal()[i]!= null){
+                aux=(Summary)hash.getVal()[i];
+                t+= aux.getTitle()+",";
+            }
+        } 
+        return make_readable(t);
+    }
     
-    public static JTable tabulate(Hash hash, Summary sum){
+    public static String[] make_readable(String s){
+        String[] content = s.split(",");
+        for(int i=0; i<content.length;i++){
+            String cap="";
+            String[] Cs = content[i].split(" ");
+            for(int j=0;j<Cs.length;j++){
+                cap+= Cs[j].substring(0,1).toUpperCase() + Cs[j].substring(1).toLowerCase()+" ";
+                
+            }
+            content[i]=cap;
+        } 
+        Arrays.sort(content);
+        return content;
+    }
+            
+    public static void tabulate(Hash hash, Summary sum){
         
-        String[] column = {"Key Word", "Frequency"};
+        String[] column = {"Palabra Clave", "Frecuencia"};
         String[] keys = sum.getKeyw();
         String[][] row = new String[keys.length][2];
         for(int i=0; i<keys.length;i++){
@@ -42,8 +85,13 @@ public class analizeSummary {
             row[i][0]=keys[i];
             row[i][1]=String.valueOf(f);
         }
-                
-        return new JTable(row, column);
+        DefaultTableModel model = new DefaultTableModel(row, column);
+        windowAnalyzeResume.table.setModel(model);
+        windowAnalyzeResume.table.setAutoResizeMode(5);
+        windowAnalyzeResume.table.getTableHeader().setFont(new Font("Trebuchet MS", Font.BOLD, 14));
+        windowAnalyzeResume.table.getTableHeader().setBackground(new Color(43,47,181));
+        windowAnalyzeResume.table.getTableHeader().setForeground(Color.white);
+        windowAnalyzeResume.jScrollPane3.setVisible(true);
     }
     
     public static int search(Hash hash, String key){

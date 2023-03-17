@@ -3,12 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyecto.interfaces;
+import proyecto.Summary;
+import proyecto.analizeSummary;
+import proyecto.uploadSummary;
 
 /**
  *
  * @author beatrizcardozo
  */
 public class windowAnalyzeResume extends javax.swing.JFrame {
+    
+    public static Summary selected;
 
     /**
      * Creates new form windowAnalyzeResume
@@ -18,6 +23,8 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
         initComponents();
         setSize(800, 600);
         setLocationRelativeTo(null);
+        jList1.setListData(analizeSummary.get_options(windowMain.hash));
+        analizeSummary.hide();
     }
 
     /**
@@ -30,30 +37,30 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        backButton = new javax.swing.JButton();
         exitButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        analize = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        sel_authors = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+        regresar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        sel_title = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        backButton.setBackground(new java.awt.Color(43, 47, 181));
-        backButton.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        backButton.setForeground(new java.awt.Color(255, 255, 255));
-        backButton.setText("Regresar");
-        backButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        backButton.setBorderPainted(false);
-        backButton.setOpaque(true);
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 30));
 
         exitButton1.setBackground(new java.awt.Color(153, 0, 0));
         exitButton1.setFont(new java.awt.Font("SansSerif", 0, 10)); // NOI18N
@@ -74,20 +81,135 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 580, -1));
 
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 20, 420));
+
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Investigaciones Disponibles:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        analize.setBackground(new java.awt.Color(43, 47, 181));
+        analize.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        analize.setForeground(new java.awt.Color(255, 255, 255));
+        analize.setText("Analizar");
+        analize.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(43, 47, 181), 5));
+        analize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        analize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                analizeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(analize, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 140, -1));
+
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Autores");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, -1));
+
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        sel_authors.setEditable(false);
+        sel_authors.setBackground(new java.awt.Color(255, 255, 255));
+        sel_authors.setColumns(20);
+        sel_authors.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        sel_authors.setForeground(new java.awt.Color(0, 0, 0));
+        sel_authors.setRows(5);
+        sel_authors.setBorder(null);
+        jScrollPane2.setViewportView(sel_authors);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 420, -1));
+
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Estadisticas");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, -1, -1));
+
+        jList1.setBackground(new java.awt.Color(255, 255, 255));
+        jList1.setBorder(null);
+        jList1.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        jList1.setForeground(new java.awt.Color(0, 0, 0));
+        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jList1.setSelectionBackground(new java.awt.Color(43, 47, 181));
+        jList1.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jList1.setValueIsAdjusting(true);
+        jScrollPane1.setViewportView(jList1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 290, 230));
+
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setForeground(new java.awt.Color(255, 255, 255));
+
+        table.setBackground(new java.awt.Color(255, 255, 255));
+        table.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        table.setForeground(new java.awt.Color(0, 0, 0));
+        table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        table.setGridColor(new java.awt.Color(0, 0, 0));
+        table.setRowHeight(25);
+        table.setRowMargin(1);
+        table.setRowSelectionAllowed(false);
+        table.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        table.setShowGrid(true);
+        jScrollPane3.setViewportView(table);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 330, 180));
+
+        regresar.setBackground(new java.awt.Color(43, 47, 181));
+        regresar.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        regresar.setForeground(new java.awt.Color(255, 255, 255));
+        regresar.setText("Regresar");
+        regresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(43, 47, 181), 2));
+        regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 30));
+
+        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 3, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(43, 47, 181));
+        jLabel5.setText("Investigacion seleccionada:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
+
+        jScrollPane4.setBorder(null);
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        sel_title.setBackground(new java.awt.Color(255, 255, 255));
+        sel_title.setColumns(20);
+        sel_title.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        sel_title.setForeground(new java.awt.Color(0, 0, 0));
+        sel_title.setLineWrap(true);
+        sel_title.setRows(5);
+        sel_title.setWrapStyleWord(true);
+        sel_title.setBorder(null);
+        jScrollPane4.setViewportView(sel_title);
+
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 410, 80));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        windowMenu windowMenu = new windowMenu();
-        this.hide();
-        windowMenu.show();
-    }//GEN-LAST:event_backButtonActionPerformed
-
     private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButton1ActionPerformed
+
+    private void analizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analizeActionPerformed
+        String title_selected = jList1.getSelectedValue();
+        selected = uploadSummary.search(title_selected.trim(),windowMain.hash);
+        analizeSummary.analyze_summary(selected);
+    }//GEN-LAST:event_analizeActionPerformed
+
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+        windowMenu windowMenu = new windowMenu();
+        this.hide();
+        windowMenu.show();
+    }//GEN-LAST:event_regresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,10 +247,24 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
+    public static javax.swing.JButton analize;
     private javax.swing.JButton exitButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    public static javax.swing.JLabel jLabel3;
+    public static javax.swing.JLabel jLabel4;
+    public static javax.swing.JLabel jLabel5;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    public static javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton regresar;
+    public static javax.swing.JTextArea sel_authors;
+    public static javax.swing.JTextArea sel_title;
+    public static javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

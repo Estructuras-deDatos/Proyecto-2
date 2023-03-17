@@ -63,7 +63,7 @@ public class uploadSummary {
     }
     
    public static File[] get_directory(){
-       File file = new File("C:\\Users\\andre\\OneDrive\\Desktop\\uni stuff\\Estructuras\\Proyecto-2\\Proyecto-2\\initialize");
+       File file = new File("C:\\Users\\andre\\OneDrive\\Desktop\\Proyecto\\Proyecto-2\\initialize");
        File f_list[] = null;
        if(!file.exists()){
            file.mkdirs();
@@ -169,7 +169,8 @@ public class uploadSummary {
     
     public static void save_file(File attached, int num){
         String f_name = "sum"+String.valueOf(num)+".txt";
-        File copy = new File("C:\\Users\\andre\\OneDrive\\Desktop\\uni stuff\\Estructuras\\Proyecto-2\\Proyecto-2\\initialize\\"+f_name);
+        File copy = new File("C:\\Users\\andre\\OneDrive\\Desktop\\Proyecto\\Proyecto-2\\initialize\\"+f_name);
+       File f_list[] = null;
          try {
              FileInputStream in = new FileInputStream(attached);
              FileOutputStream out = new FileOutputStream(copy);
@@ -337,9 +338,10 @@ public class uploadSummary {
             int in = hash.sfold(key.toLowerCase(), hash.getCapacity());
             Summary aux = (Summary) hash.getVal()[in];
             if(aux!=null){
-            if(aux.getTitle().equals(key.toLowerCase())){
+            if(aux.getTitle().equalsIgnoreCase(key.toLowerCase())){
                 found = (Summary) hash.getVal()[in];
-            }}else{
+            }
+            else{
                 int i =1;
                 int k=in;
                 while(i<hash.getCapacity()){
@@ -347,14 +349,14 @@ public class uploadSummary {
                     i++;
                     aux=(Summary) hash.getVal()[k];
                     if(aux!=null){
-                        if(aux.getTitle().equals(key.toLowerCase())){
+                        if(aux.getTitle().equalsIgnoreCase(key.toLowerCase())){
                             found = (Summary) hash.getVal()[k];
                         }
                 }
             }
         }
  
-    }
+    }}
     return found;
     }
 }
