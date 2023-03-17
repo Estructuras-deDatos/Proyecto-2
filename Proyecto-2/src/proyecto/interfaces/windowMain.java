@@ -5,6 +5,8 @@ import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Insets;
 import javax.swing.border.Border;
+import proyecto.Hash;
+import proyecto.uploadSummary;
 
 /**
  * Esta clase, JFrame window, define objetos que interactuan con el usuario en la página principal del programa. 
@@ -14,6 +16,7 @@ import javax.swing.border.Border;
 
 public class windowMain extends javax.swing.JFrame {
 
+    public static Hash hash;
     /**
      * Creates new form windowMain
      */
@@ -24,6 +27,7 @@ public class windowMain extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         continueButton.setBounds(10, 10, 30, 25);
         continueButton.setBorder(new RoundedBorder(10)); //10 is the radius
+        hash = uploadSummary.create_hash();
     }
 
     /**

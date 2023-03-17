@@ -4,6 +4,8 @@
  */
 package proyecto;
 
+import proyecto.interfaces.windowMain;
+
 /**
  *
  * @author andre
@@ -14,11 +16,9 @@ public class Proyecto2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+       windowMain main = new windowMain();
        
-        Hash hash = uploadSummary.create_hash();
-        
-        
-        analizeSummary.analyze_summary(uploadSummary.search("Arquitectura referencial para mecanismos de Internacionalización y localización en PHP.", hash));
+       main.setVisible(true);
     }
     
 }

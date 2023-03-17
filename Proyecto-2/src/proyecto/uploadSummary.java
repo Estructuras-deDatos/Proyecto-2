@@ -19,6 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import proyecto.interfaces.windowAddResume;
 
 /**
  *
@@ -26,7 +27,7 @@ import javax.swing.JOptionPane;
  */
 public class uploadSummary {
     
-     public static Hash create_hash(){
+   public static Hash create_hash(){
         
         File[] f_list = get_directory();
         
@@ -72,23 +73,98 @@ public class uploadSummary {
        return f_list;
    }
     
-    public static String load_summary(Hash hash){
-        File file = attach_file();
+   public static Summary validate_txt(File file){
+       if(file!=null){
+           String read = read_txt(file);
+           String[] content = check_txt(read);
+           if(content!=null){
+               Summary newSum = create_summary(content);
+               return newSum;
+           }else{
+               return null;
+           }
+       }
+       return null;
+   }
+   
+   public static void make_visible(Summary newSum){
+       windowAddResume.fail_message.setVisible(false);
+       windowAddResume.jLabel5.setVisible(true);
+       windowAddResume.jLabel6.setVisible(true);
+       windowAddResume.Resumen.setVisible(true);
+       windowAddResume.summary_title.setVisible(true);
+       windowAddResume.summary_title.setText(capitalize(newSum.getTitle()));
+       windowAddResume.summary_keyw.setText(array_readable(newSum.getKeyw()));
+       windowAddResume.summary_authors.setText(array_readable(newSum.getAuthors()));
+       windowAddResume.summary_authors.setVisible(true);
+       windowAddResume.summary_body.setVisible(true);
+       windowAddResume.jScrollPane3.setVisible(true);
+       windowAddResume.summary_body.setText(newSum.getBody());
+       windowAddResume.confirm_message.setVisible(true);
+   }
+   public static void hide(){
+       windowAddResume.summary_title.setVisible(false);
+        windowAddResume.jLabel5.setVisible(false);
+        windowAddResume.jLabel6.setVisible(false);
+        windowAddResume.Resumen.setVisible(false);
+        windowAddResume.jScrollPane3.setVisible(false);
+        windowAddResume.summary_authors.setText("");
+        windowAddResume.confirm.setVisible(false);
+        windowAddResume.confirm_message.setVisible(false);
+        windowAddResume.summary_keyw.setText("");
+        windowAddResume.summary_body.setText("");
+   }
+   
+   public static void add_summary(Hash hash, Summary sum, File file){
+       hash.insert(sum.getTitle(), sum);
+       save_file(file, hash.getSize()); 
+   }
+   
+    public static Object[] load_summary(Hash hash, File file){
+        Object[] result = new Object[2];
         if(file!=null){
             String read = read_txt(file);
             String[] content = check_txt(read);
             if(content!=null){
                   Summary newSum = create_summary(content);
+                  make_visible(newSum);
                   if(!check_if_loaded(newSum, hash)){
-                      hash.insert(newSum.getTitle(), newSum);
-                      save_file(file, hash.getSize());
-                      System.out.println("Loaded successfully");
+                      result[0]=true;
+                      result[1]=newSum;
                   } else{
-                      System.out.println("Already loaded");
+                      windowAddResume.fail_message.setVisible(true);
+                      windowAddResume.fail_message.setText("Resumen ya disponible en el sistema");
+                      result[0]=false;
                   }
+            }else{
+                windowAddResume.fail_message.setVisible(true);
+                windowAddResume.fail_message.setText("Archivo Invalido");
+                result[0]=false;
             }
+        }else{
+           result[0]=false;
         }
-        return "";
+        return result;
+    }
+    
+    public static String array_readable(String[] array){
+        String printable="";
+        for(String word:array){
+            String[] w = word.split(" ");
+            for (String l : w){
+                printable+=l.substring(0,1).toUpperCase() + l.substring(1).toLowerCase()+" ";
+            }
+            printable+= "\n";
+        } 
+        return printable;
+    }
+    public static String capitalize(String s){
+        String[] split = s.split(" ");
+        String print ="";
+        for(String word : split){
+            print+= word.substring(0,1).toUpperCase() + word.substring(1).toLowerCase()+" ";
+        }
+        return print;
     }
     
     public static void save_file(File attached, int num){
@@ -107,7 +183,6 @@ public class uploadSummary {
              if (out != null) {
                 out.close();
             }
-             System.out.println("Copied successfully");
          } 
          catch (FileNotFoundException ex) {
              Logger.getLogger(uploadSummary.class.getName()).log(Level.SEVERE, null, ex);
@@ -126,11 +201,11 @@ public class uploadSummary {
             file=chooser.getSelectedFile();
         }
         else{
-            JOptionPane.showMessageDialog(null, "Debe seleccionar un archivo!");
+            windowAddResume.fail_message.setText("Seleccione un archivo");
             
         }}
         catch(Exception e){
-           JOptionPane.showMessageDialog(null, "Error adjuntando el archivo");
+           windowAddResume.fail_message.setText("Error adjuntando archivo");
         }
         return file;
     }

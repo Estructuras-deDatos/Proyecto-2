@@ -6,6 +6,8 @@ package proyecto.interfaces;
 
 import java.io.File;
 import javax.swing.JFileChooser;
+import proyecto.Summary;
+import proyecto.uploadSummary;
 
 /**
  *
@@ -13,6 +15,9 @@ import javax.swing.JFileChooser;
  */
 public class windowAddResume extends javax.swing.JFrame {
 
+    public static File file;
+    public static Summary sum;
+    public static boolean valid;
     /**
      * Creates new form windowAddResume
      */
@@ -21,6 +26,7 @@ public class windowAddResume extends javax.swing.JFrame {
         initComponents();
         setSize(800, 600);
         setLocationRelativeTo(null);
+        uploadSummary.hide();
     }
 
     /**
@@ -37,9 +43,23 @@ public class windowAddResume extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        addResumeButton = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        attachSummary = new javax.swing.JButton();
+        path = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        fail_message = new javax.swing.JLabel();
+        confirm_message = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        summary_title = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        Resumen = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane = new javax.swing.JScrollPane();
+        summary_keyw = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        summary_body = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        summary_authors = new javax.swing.JTextArea();
+        confirm = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,28 +100,116 @@ public class windowAddResume extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 580, -1));
 
-        addResumeButton.setBackground(new java.awt.Color(43, 47, 181));
-        addResumeButton.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        addResumeButton.setForeground(new java.awt.Color(255, 255, 255));
-        addResumeButton.setText("Añadir");
-        addResumeButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        addResumeButton.setBorderPainted(false);
-        addResumeButton.setOpaque(true);
-        addResumeButton.addActionListener(new java.awt.event.ActionListener() {
+        attachSummary.setBackground(new java.awt.Color(43, 47, 181));
+        attachSummary.setFont(new java.awt.Font("Trebuchet MS", 1, 10)); // NOI18N
+        attachSummary.setForeground(new java.awt.Color(255, 255, 255));
+        attachSummary.setText("Adjuntar");
+        attachSummary.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        attachSummary.setBorderPainted(false);
+        attachSummary.setOpaque(true);
+        attachSummary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addResumeButtonActionPerformed(evt);
+                attachSummaryActionPerformed(evt);
             }
         });
-        jPanel1.add(addResumeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 150, 130, 30));
+        jPanel1.add(attachSummary, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 130, 20));
 
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 280, 30));
+        path.setEditable(false);
+        path.setBackground(new java.awt.Color(255, 255, 255));
+        path.setFont(new java.awt.Font("Trebuchet MS", 2, 12)); // NOI18N
+        path.setForeground(new java.awt.Color(43, 47, 181));
+        jPanel1.add(path, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 400, -1));
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 2, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Archivo: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
+        jLabel2.setText("Cargar archivo del resumen correspondiente:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+
+        fail_message.setFont(new java.awt.Font("Trebuchet MS", 3, 12)); // NOI18N
+        fail_message.setForeground(new java.awt.Color(153, 0, 0));
+        jPanel1.add(fail_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 400, 20));
+
+        confirm_message.setFont(new java.awt.Font("Trebuchet MS", 3, 14)); // NOI18N
+        confirm_message.setForeground(new java.awt.Color(43, 47, 181));
+        jPanel1.add(confirm_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 400, 40));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 690, 10));
+
+        summary_title.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        summary_title.setForeground(new java.awt.Color(0, 0, 0));
+        summary_title.setText("jLabel3");
+        jPanel1.add(summary_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Palabras Claves");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, -1));
+
+        Resumen.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        Resumen.setForeground(new java.awt.Color(0, 0, 0));
+        Resumen.setText("Resumen");
+        jPanel1.add(Resumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Autores");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
+
+        jScrollPane.setBorder(null);
+        jScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        summary_keyw.setEditable(false);
+        summary_keyw.setBackground(new java.awt.Color(255, 255, 255));
+        summary_keyw.setColumns(20);
+        summary_keyw.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        summary_keyw.setForeground(new java.awt.Color(0, 0, 0));
+        summary_keyw.setRows(5);
+        summary_keyw.setBorder(null);
+        jScrollPane.setViewportView(summary_keyw);
+
+        jPanel1.add(jScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 290, -1));
+
+        jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        summary_body.setEditable(false);
+        summary_body.setBackground(new java.awt.Color(255, 255, 255));
+        summary_body.setColumns(20);
+        summary_body.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        summary_body.setForeground(new java.awt.Color(0, 0, 0));
+        summary_body.setLineWrap(true);
+        summary_body.setRows(5);
+        summary_body.setWrapStyleWord(true);
+        summary_body.setBorder(null);
+        jScrollPane3.setViewportView(summary_body);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 390, 170));
+
+        jScrollPane1.setBorder(null);
+
+        summary_authors.setEditable(false);
+        summary_authors.setBackground(new java.awt.Color(255, 255, 255));
+        summary_authors.setColumns(20);
+        summary_authors.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        summary_authors.setForeground(new java.awt.Color(0, 0, 0));
+        summary_authors.setRows(5);
+        summary_authors.setBorder(null);
+        jScrollPane1.setViewportView(summary_authors);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 290, -1));
+
+        confirm.setBackground(new java.awt.Color(43, 47, 181));
+        confirm.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        confirm.setForeground(new java.awt.Color(255, 255, 255));
+        confirm.setText("Confirmar");
+        confirm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(43, 47, 181)));
+        confirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmActionPerformed(evt);
+            }
+        });
+        jPanel1.add(confirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 210, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
@@ -118,14 +226,33 @@ public class windowAddResume extends javax.swing.JFrame {
         windowMenu.show();
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void addResumeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addResumeButtonActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        int selection = fileChooser.showOpenDialog(this);
-        if(selection == JFileChooser.APPROVE_OPTION){
-            File fichero = fileChooser.getSelectedFile();
-            //FC.read_txt(fichero.getAbsolutePath());
+    private void attachSummaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attachSummaryActionPerformed
+        file = uploadSummary.attach_file();
+        if(file!=null){
+            path.setText(file.getPath());
+            confirm_message.setVisible(true);
+            confirm_message.setText("Prevista del resumen");
+            Object[] result = uploadSummary.load_summary(windowMain.hash, file);
+            valid =(boolean) result[0];
+            if(valid){
+                confirm.setVisible(true);
+                sum=(Summary) result[1];
+            }else{
+                uploadSummary.hide();
+            }
+        }else{
+            path.setText("...");
         }
-    }//GEN-LAST:event_addResumeButtonActionPerformed
+    }//GEN-LAST:event_attachSummaryActionPerformed
+
+    private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
+        if(valid){
+            uploadSummary.add_summary(windowMain.hash, sum, file);
+            uploadSummary.hide();
+            confirm_message.setVisible(true);
+            confirm_message.setText("Carga y Guardado Exitoso");
+        }
+    }//GEN-LAST:event_confirmActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,13 +290,27 @@ public class windowAddResume extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addResumeButton;
+    public static javax.swing.JLabel Resumen;
+    private javax.swing.JButton attachSummary;
     private javax.swing.JButton backButton;
+    public static javax.swing.JButton confirm;
+    public static javax.swing.JLabel confirm_message;
     private javax.swing.JButton exitButton1;
+    public static javax.swing.JLabel fail_message;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    public static javax.swing.JLabel jLabel5;
+    public static javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    public static javax.swing.JScrollPane jScrollPane;
+    public static javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField path;
+    public static javax.swing.JTextArea summary_authors;
+    public static javax.swing.JTextArea summary_body;
+    public static javax.swing.JTextArea summary_keyw;
+    public static javax.swing.JLabel summary_title;
     // End of variables declaration//GEN-END:variables
 }
