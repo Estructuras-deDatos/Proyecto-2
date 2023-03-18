@@ -17,7 +17,7 @@ public class Hash {
 
     public Hash(int capacity) {
         this.capacity = capacity;
-        this.size=0;
+        this.size = 0;
         this.val = new Object[capacity];
     }
     

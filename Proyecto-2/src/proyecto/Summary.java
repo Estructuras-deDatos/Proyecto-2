@@ -23,11 +23,13 @@ public class Summary {
     }
 
     public String print(){
+        
         String toPrint=getTitle()+"\n";
         for(int i =0;i<getAuthors().length;i++){
             toPrint+=getAuthors()[i]+"\n";
         }
         return toPrint;
+        
     }
     
     
