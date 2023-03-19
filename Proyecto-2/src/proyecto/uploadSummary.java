@@ -11,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.Normalizer;
 import java.util.Arrays;
 import java.util.logging.Level;
@@ -63,7 +65,9 @@ public class uploadSummary {
     }
     
    public static File[] get_directory(){
-       File file = new File("C:\\Users\\andre\\OneDrive\\Desktop\\Proyecto\\Proyecto-2\\initialize");
+       String dir = System.getProperty("user.dir");
+       System.out.println(dir);
+       File file = new File(dir+"\\initialize");
        File f_list[] = null;
        if(!file.exists()){
            file.mkdirs();
@@ -175,7 +179,8 @@ public class uploadSummary {
     
     public static void save_file(File attached, int num){
         String f_name = "sum"+String.valueOf(num)+".txt";
-        File copy = new File("C:\\Users\\andre\\OneDrive\\Desktop\\Proyecto\\Proyecto-2\\initialize\\"+f_name);
+        String dir = System.getProperty("user.dir");
+        File copy = new File(dir+"\\initialize\\"+f_name);
        File f_list[] = null;
          try {
              FileInputStream in = new FileInputStream(attached);
