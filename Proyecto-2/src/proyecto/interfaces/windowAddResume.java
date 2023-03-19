@@ -259,7 +259,9 @@ public class windowAddResume extends javax.swing.JFrame {
             }
         }else{
             path.setText("...");
-        } 
+        }
+        
+        
         //Cierre del método
     }//GEN-LAST:event_attachSummaryActionPerformed
 

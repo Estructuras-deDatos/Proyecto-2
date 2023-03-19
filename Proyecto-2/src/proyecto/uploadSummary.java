@@ -128,12 +128,18 @@ public class uploadSummary {
             if(content!=null){
                   Summary newSum = create_summary(content);
                   make_visible(newSum);
+                  if(hash.getSize()<hash.getCapacity()){
                   if(!check_if_loaded(newSum, hash)){
                       result[0]=true;
                       result[1]=newSum;
                   } else{
                       windowAddResume.fail_message.setVisible(true);
                       windowAddResume.fail_message.setText("Resumen ya disponible en el sistema");
+                      result[0]=false;
+                  }}
+                  else{
+                      windowAddResume.fail_message.setVisible(true);
+                      windowAddResume.fail_message.setText("Almacenamiento del Sistema Lleno");
                       result[0]=false;
                   }
             }else{
