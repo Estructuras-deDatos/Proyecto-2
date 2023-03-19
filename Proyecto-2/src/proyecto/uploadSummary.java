@@ -11,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.Normalizer;
 import java.util.Arrays;
 import java.util.logging.Level;
@@ -63,7 +65,9 @@ public class uploadSummary {
     }
     
    public static File[] get_directory(){
-       File file = new File("C:\\Users\\andre\\OneDrive\\Desktop\\Proyecto\\Proyecto-2\\initialize");
+       String dir = System.getProperty("user.dir");
+       System.out.println(dir);
+       File file = new File(dir+"\\initialize");
        File f_list[] = null;
        if(!file.exists()){
            file.mkdirs();
@@ -128,12 +132,18 @@ public class uploadSummary {
             if(content!=null){
                   Summary newSum = create_summary(content);
                   make_visible(newSum);
+                  if(hash.getSize()<hash.getCapacity()){
                   if(!check_if_loaded(newSum, hash)){
                       result[0]=true;
                       result[1]=newSum;
                   } else{
                       windowAddResume.fail_message.setVisible(true);
                       windowAddResume.fail_message.setText("Resumen ya disponible en el sistema");
+                      result[0]=false;
+                  }}
+                  else{
+                      windowAddResume.fail_message.setVisible(true);
+                      windowAddResume.fail_message.setText("Almacenamiento del Sistema Lleno");
                       result[0]=false;
                   }
             }else{
@@ -169,7 +179,8 @@ public class uploadSummary {
     
     public static void save_file(File attached, int num){
         String f_name = "sum"+String.valueOf(num)+".txt";
-        File copy = new File("C:\\Users\\andre\\OneDrive\\Desktop\\Proyecto\\Proyecto-2\\initialize\\"+f_name);
+        String dir = System.getProperty("user.dir");
+        File copy = new File(dir+"\\initialize\\"+f_name);
        File f_list[] = null;
          try {
              FileInputStream in = new FileInputStream(attached);
@@ -301,7 +312,7 @@ public class uploadSummary {
     }
     
     public static boolean check_if_loaded(Summary sum, Hash hash){
-        Summary match = search(sum.getTitle(), hash);
+        Summary match = search_sum(sum.getTitle(), hash);
         if(match!=null){
             return Arrays.equals(match.getAuthors(), sum.getAuthors());
         }else{
@@ -332,7 +343,7 @@ public class uploadSummary {
         return toPrint;
     }
     
-    public static Summary search(String key, Hash hash){
+    public static Summary search_sum(String key, Hash hash){
         Summary found = null;
         if(!hash.isEmpty()){
             int in = hash.sfold(key.toLowerCase(), hash.getCapacity());

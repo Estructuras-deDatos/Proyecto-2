@@ -23,8 +23,8 @@ public class windowAddResume extends javax.swing.JFrame {
         setSize(800, 600);
         setLocationRelativeTo(null);
         uploadSummary.hide();
-        summary_authors.setVisible(false);
-        summary_keyw.setVisible(false);
+        summary_authors.setText("");
+        summary_keyw.setText("");
     } //Cierre del constructor
 
 
@@ -106,30 +106,30 @@ public class windowAddResume extends javax.swing.JFrame {
                 attachSummaryActionPerformed(evt);
             }
         });
-        jPanel1.add(attachSummary, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 150, 150, 30));
+        jPanel1.add(attachSummary, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, 150, 30));
 
         path.setEditable(false);
         path.setBackground(new java.awt.Color(255, 255, 255));
         path.setFont(new java.awt.Font("Trebuchet MS", 2, 12)); // NOI18N
         path.setForeground(new java.awt.Color(43, 47, 181));
         path.setOpaque(true);
-        jPanel1.add(path, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 400, 30));
+        jPanel1.add(path, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 400, 30));
 
         fail_message.setFont(new java.awt.Font("Trebuchet MS", 3, 12)); // NOI18N
         fail_message.setForeground(new java.awt.Color(153, 0, 0));
-        jPanel1.add(fail_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 400, 20));
+        jPanel1.add(fail_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 400, 20));
 
         confirm_message.setFont(new java.awt.Font("Trebuchet MS", 3, 14)); // NOI18N
         confirm_message.setForeground(new java.awt.Color(43, 47, 181));
-        jPanel1.add(confirm_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 340, 20));
+        jPanel1.add(confirm_message, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 340, 20));
 
         jSeparator2.setOpaque(true);
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 690, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 690, -1));
 
         summary_title.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         summary_title.setForeground(new java.awt.Color(0, 0, 0));
         summary_title.setText("Titulo");
-        jPanel1.add(summary_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 450, -1));
+        jPanel1.add(summary_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 750, -1));
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 2, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -147,6 +147,7 @@ public class windowAddResume extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
 
         jScrollPane.setBorder(null);
+        jScrollPane.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
@@ -179,6 +180,7 @@ public class windowAddResume extends javax.swing.JFrame {
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 540, 170));
 
         jScrollPane1.setBorder(null);
+        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
 
         summary_authors.setEditable(false);
         summary_authors.setBackground(new java.awt.Color(255, 255, 255));
@@ -208,7 +210,7 @@ public class windowAddResume extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Kohinoor Devanagari", 2, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Cargar archivo del resumen correspondiente:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
@@ -257,7 +259,9 @@ public class windowAddResume extends javax.swing.JFrame {
             }
         }else{
             path.setText("...");
-        } 
+        }
+        
+        
         //Cierre del método
     }//GEN-LAST:event_attachSummaryActionPerformed
 
