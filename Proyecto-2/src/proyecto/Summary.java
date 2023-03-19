@@ -15,11 +15,11 @@ public class Summary {
     private String body;
     private String[] keyw;
 
-    public Summary(String title, String[] authors, String body, String[] keyw) {
-        this.title = title;
-        this.authors = authors;
-        this.body = body;
-        this.keyw = keyw;
+    public Summary() {
+        this.title = "";
+        this.authors = null;
+        this.body = "";
+        this.keyw = null;
     }
 
     public String print(){

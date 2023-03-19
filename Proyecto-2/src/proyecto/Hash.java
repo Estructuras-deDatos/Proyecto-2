@@ -71,6 +71,8 @@ public class Hash {
         return val;
     }
     
-    
+    public boolean isEmpty(){
+        return size==0;
+    }
     
 }

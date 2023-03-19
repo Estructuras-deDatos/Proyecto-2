@@ -4,6 +4,8 @@
  */
 package proyecto.interfaces;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author beatrizcardozo
@@ -34,6 +36,12 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
         exitButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        selectResumeButton = new javax.swing.JButton();
+        authorsComboBox = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        resumeFoundList = new javax.swing.JList<>();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -74,6 +82,49 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 580, -1));
 
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Investigaciones encotradas de \"AUTOR\":");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
+
+        selectResumeButton.setBackground(new java.awt.Color(43, 47, 181));
+        selectResumeButton.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        selectResumeButton.setForeground(new java.awt.Color(255, 255, 255));
+        selectResumeButton.setText("Seleccionar Investigación");
+        selectResumeButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        selectResumeButton.setBorderPainted(false);
+        selectResumeButton.setOpaque(true);
+        selectResumeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectResumeButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(selectResumeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, 270, 30));
+
+        authorsComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        authorsComboBox.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        authorsComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        authorsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Autor 1", "Autor 2", "Autor 3", "Autor 4" }));
+        authorsComboBox.setOpaque(true);
+        jPanel1.add(authorsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 320, 30));
+
+        resumeFoundList.setBackground(new java.awt.Color(204, 204, 204));
+        resumeFoundList.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        resumeFoundList.setForeground(new java.awt.Color(0, 0, 0));
+        resumeFoundList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(resumeFoundList);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 390, 210));
+
+        jLabel3.setFont(new java.awt.Font("Kohinoor Devanagari", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Seleccione un autor, para conocer sus resumenes registrados:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         pack();
@@ -88,6 +139,14 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
     private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButton1ActionPerformed
+
+    private void selectResumeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectResumeButtonActionPerformed
+        if(authorsComboBox.getSelectedIndex() != -1 && windowMain.auxFunc.checkListSelec(resumeFoundList)){ 
+            windowResumeDetails resumeDetails = new windowResumeDetails();
+            resumeDetails.show();
+        }   
+    //Cierre del método
+    }//GEN-LAST:event_selectResumeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,10 +184,16 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> authorsComboBox;
     private javax.swing.JButton backButton;
     private javax.swing.JButton exitButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JList<String> resumeFoundList;
+    private javax.swing.JButton selectResumeButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,7 @@
  */
 package proyecto;
 
+
 import static proyecto.functions.print_hashS;
 import proyecto.interfaces.windowMain;
 
@@ -17,19 +18,26 @@ public class Proyecto2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
         
-        functions func = new functions();
-        Hash hash1 = new Hash(10);
-        String body = "No se que carajo le pasa";
-        String[] authors = {"Haidar","Gabriel"};
-        String[] keyW = {"Nose", "por que"};
-        Summary sum1 = new Summary("Que le pasa a haidar", authors, body, keyW);
-        
-        hash1.insert("Que le pasa a haidar", sum1);
-        System.out.println(func.search("Que le pasa a haidar", hash1).print());
-        
-        windowMain main = new windowMain();
-        main.setVisible(true);
+//        functions func = new functions();
+//        Hash hash1 = new Hash(10);
+//        String body = "No se que carajo le pasa";
+//        String[] authors = {"Haidar","Gabriel"};
+//        String[] keyW = {"Nose", "por que"};
+//        Summary sum1 = new Summary("Que le pasa a haidar", authors, body, keyW);
+//        
+//        hash1.insert("Que le pasa a haidar", sum1);
+//        System.out.println(func.search("Que le pasa a haidar", hash1).print());
+//        
+//        windowMain main = new windowMain();
+//        main.setVisible(true);
+
+       windowMain main = new windowMain();
+       
+       main.setVisible(true);
+       
+
     }
     
 }
