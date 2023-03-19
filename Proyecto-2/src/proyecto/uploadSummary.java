@@ -301,7 +301,7 @@ public class uploadSummary {
     }
     
     public static boolean check_if_loaded(Summary sum, Hash hash){
-        Summary match = search(sum.getTitle(), hash);
+        Summary match = search_sum(sum.getTitle(), hash);
         if(match!=null){
             return Arrays.equals(match.getAuthors(), sum.getAuthors());
         }else{
@@ -332,7 +332,7 @@ public class uploadSummary {
         return toPrint;
     }
     
-    public static Summary search(String key, Hash hash){
+    public static Summary search_sum(String key, Hash hash){
         Summary found = null;
         if(!hash.isEmpty()){
             int in = hash.sfold(key.toLowerCase(), hash.getCapacity());

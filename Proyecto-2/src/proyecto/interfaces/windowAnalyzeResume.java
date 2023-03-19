@@ -183,7 +183,7 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
 
         sel_title.setBackground(new java.awt.Color(255, 255, 255));
         sel_title.setColumns(20);
-        sel_title.setFont(new java.awt.Font("Kohinoor Devanagari", 2, 12)); // NOI18N
+        sel_title.setFont(new java.awt.Font("Kohinoor Devanagari", 2, 18)); // NOI18N
         sel_title.setForeground(new java.awt.Color(0, 0, 0));
         sel_title.setLineWrap(true);
         sel_title.setRows(5);
@@ -193,7 +193,7 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 390, 80));
 
-        problem.setFont(new java.awt.Font("Kohinoor Devanagari", 2, 12)); // NOI18N
+        problem.setFont(new java.awt.Font("Kohinoor Devanagari", 3, 12)); // NOI18N
         problem.setForeground(new java.awt.Color(102, 0, 0));
         problem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         problem.setText("...");
@@ -221,11 +221,11 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
         String title_selected = jList1.getSelectedValue();
         if(title_selected!=null){
             problem.setVisible(false);
-        selected = uploadSummary.search(title_selected.trim(),windowMain.hash);
-        analizeSummary.analyze_summary(selected);}
+            selected = uploadSummary.search_sum(title_selected.trim(),windowMain.hash);
+            analizeSummary.analyze_summary(selected);}
         else{
             problem.setVisible(true);
-            problem.setText("Por favor seleccione una opcion!");
+            problem.setText("Por favor seleccione una opcion");
         }
         //Cierre del método
     }//GEN-LAST:event_analyzeActionPerformed
