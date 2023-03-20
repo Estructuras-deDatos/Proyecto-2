@@ -145,7 +145,7 @@ public class searchByKey {
             Nodo aux = (Nodo) keyHash.getVal()[i];
             if(aux!=null){
                 String name = uploadSummary.replace_accents(aux.getKey());
-                if(name.equals(keyW)){
+                if(name.equalsIgnoreCase(keyW)){
                     result[0]=true;
                     result[1]=aux;
                 }
