@@ -174,7 +174,7 @@ public class windowResumeDetails extends javax.swing.JFrame {
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.hide();
 
-    } //Cierre del métodp
+    } //Cierre del método
     //GEN-LAST:event_backButtonActionPerformed
 
     /**
