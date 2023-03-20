@@ -16,20 +16,6 @@ import javax.swing.JTextField;
 
 public class auxFunctions {
     
-//    /**
-//     * Método que genera un arreglo de Strings con los nombres de los almacenes existentes.
-//     * @return Arreglo de Strings que consta de los identificadores de los almacenes.
-//     */
-//    public String [] arrayWarehouseNames(){
-//        String[] names = new String[windowMain.grafo.getList().getSize()];
-//        Nodo temporal = windowMain.grafo.getList().getpFirst();
-//        for (int i = 0; i < windowMain.grafo.getList().getSize(); i++) {
-//            names[i] = (String)temporal.getData();
-//            temporal = temporal.getNext();
-//        }
-//        return names;
-//    } //Cierre del método
-    
     /**
      * Método que valida que los caracteres que el usuario puede ingresar en un determinado JTextField sean letras. 
      * @param evt El parámetro evt contiene la información del evento llevado a cabo por el usuario.
@@ -89,21 +75,6 @@ public class auxFunctions {
         label.setText(txtfield.getText());
     } //Cierre del método
     
-    
-    /**
-     * Método que modifica un label según el elemento seleccionado en un jComboBox. 
-     * @param comboBox El parámetro comboBox define del JComboBox del que se tomara el elemento seleccionado.
-     * @param label El parámetro label define el JLabel del que se modificará el texto.
-     * @param txtArea El parámetro txtArea define donde se imprimiran los datos del elemento seleccionado.
-     * @param setString El parámetro setString define un dato tipo String.
-     */
-//    public void setDefault(JComboBox comboBox, JLabel label, JTextArea txtArea, String setString){
-//        String string = String.valueOf(comboBox.getSelectedItem());
-//        label.setText("Productos Disponibles en Almacen " + string + ":");
-//        windowStock.NodoWh = windowMain.grafo.getList().Search(string);
-//        txtArea.setText(windowStock.NodoWh.getStock().Print());
-//    }
-//    //Cierre del método
     
     /**
      * Método que devuelve el objeto ImageIcon para asignar a un JOptionPane. 
