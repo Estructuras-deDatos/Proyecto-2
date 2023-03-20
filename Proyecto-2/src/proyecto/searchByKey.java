@@ -10,8 +10,9 @@ import static proyecto.interfaces.windowSearchByKeywords.investLabel;
 import static proyecto.interfaces.windowSearchByKeywords.keywordTextField;
 
 /**
- *
- * @author andre
+ * Esta clase, define funciones necesarias para el registro de las palabras clave almacenadas en cada resumen.
+ * @author: andre
+ * @version: 22/03/2023
  */
 public class searchByKey {
     
@@ -168,4 +169,4 @@ public class searchByKey {
             node.setIndex(String.valueOf(in));
         }
     }
-}
+} //Cierre de la clase
