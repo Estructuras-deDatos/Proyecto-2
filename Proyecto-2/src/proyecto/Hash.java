@@ -5,8 +5,9 @@
 package proyecto;
 
 /**
- * 
- * @author andre
+ * Esta clase define métodos y atributos del HashTable. 
+ * @author: andre
+ * @version: 22/03/2023
  */
 public class Hash {
     
@@ -15,11 +16,15 @@ public class Hash {
     private int size;
     private final Object[] val;
 
+    
+     /**
+     * Constructor para la clase Hash
+     */
     public Hash(int capacity) {
         this.capacity = capacity;
         this.size=0;
         this.val = new Object[capacity];
-    }
+    } //Cierre del constructor
     
     
     public void insert(String key, Object value){
@@ -74,4 +79,4 @@ public class Hash {
         return size==0;
     }
     
-}
+} //Cierre de la clase
