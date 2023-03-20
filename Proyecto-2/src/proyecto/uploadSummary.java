@@ -63,14 +63,24 @@ public class uploadSummary {
     }
     
    public static File[] get_directory(){
-       String dir = System.getProperty("user.dir");
-       File file = new File(dir+"\\initialize");
+       String OS = System.getProperty("os.name").toLowerCase();
+       File file=null;
+       if(OS.contains("win")){
+                String dir = System.getProperty("user.dir");
+                file = new File(dir+"\\initialize");
+       }else{
+          if(OS.contains("mac")||OS.contains("nux")){
+              String dir = System.getProperty("user.dir");
+              file = new File(dir+"//initialize");
+          }
+       }
        File f_list[] = null;
+       if(file!=null){
        if(!file.exists()){
            file.mkdirs();
        }else{
            f_list= file.listFiles();
-       }
+       }}
        return f_list;
    }
     
