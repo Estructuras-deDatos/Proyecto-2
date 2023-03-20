@@ -17,7 +17,6 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
         setSize(800, 600);
         setLocationRelativeTo(null);
         searchByKey.hide();
-        select.
     } //Cierre del constructor
 
     @SuppressWarnings("unchecked")
