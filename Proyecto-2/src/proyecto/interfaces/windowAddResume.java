@@ -1,6 +1,8 @@
 package proyecto.interfaces;
 import java.io.File;
+import proyecto.Hash;
 import proyecto.Summary;
+import proyecto.searchByKey;
 import proyecto.uploadSummary;
 
 /**
@@ -95,7 +97,7 @@ public class windowAddResume extends javax.swing.JFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 580, -1));
 
         attachSummary.setBackground(new java.awt.Color(43, 47, 181));
-        attachSummary.setFont(new java.awt.Font("Kohinoor Devanagari", 1, 14)); // NOI18N
+        attachSummary.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         attachSummary.setForeground(new java.awt.Color(255, 255, 255));
         attachSummary.setText("Adjuntar");
         attachSummary.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -112,6 +114,7 @@ public class windowAddResume extends javax.swing.JFrame {
         path.setBackground(new java.awt.Color(255, 255, 255));
         path.setFont(new java.awt.Font("Trebuchet MS", 2, 12)); // NOI18N
         path.setForeground(new java.awt.Color(43, 47, 181));
+        path.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         path.setOpaque(true);
         jPanel1.add(path, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 400, 30));
 
@@ -129,9 +132,9 @@ public class windowAddResume extends javax.swing.JFrame {
         summary_title.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         summary_title.setForeground(new java.awt.Color(0, 0, 0));
         summary_title.setText("Titulo");
-        jPanel1.add(summary_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 750, -1));
+        jPanel1.add(summary_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 690, -1));
 
-        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 2, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Palabras Claves:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, -1, -1));
@@ -139,9 +142,9 @@ public class windowAddResume extends javax.swing.JFrame {
         Resumen.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         Resumen.setForeground(new java.awt.Color(0, 0, 0));
         Resumen.setText("Resumen");
-        jPanel1.add(Resumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, -1, -1));
+        jPanel1.add(Resumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 2, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Autores:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
@@ -158,23 +161,27 @@ public class windowAddResume extends javax.swing.JFrame {
         summary_keyw.setForeground(new java.awt.Color(0, 0, 0));
         summary_keyw.setRows(5);
         summary_keyw.setBorder(null);
+        summary_keyw.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        summary_keyw.setSelectionColor(new java.awt.Color(43, 47, 181));
         jScrollPane.setViewportView(summary_keyw);
 
         jPanel1.add(jScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 290, -1));
 
-        jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane3.setBorder(null);
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         summary_body.setEditable(false);
-        summary_body.setBackground(new java.awt.Color(204, 204, 204));
+        summary_body.setBackground(new java.awt.Color(255, 255, 255));
         summary_body.setColumns(20);
         summary_body.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         summary_body.setForeground(new java.awt.Color(0, 0, 0));
         summary_body.setLineWrap(true);
         summary_body.setRows(5);
         summary_body.setWrapStyleWord(true);
-        summary_body.setBorder(null);
+        summary_body.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        summary_body.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        summary_body.setSelectionColor(new java.awt.Color(43, 47, 181));
         jScrollPane3.setViewportView(summary_body);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 540, 170));
@@ -189,12 +196,14 @@ public class windowAddResume extends javax.swing.JFrame {
         summary_authors.setForeground(new java.awt.Color(0, 0, 0));
         summary_authors.setRows(5);
         summary_authors.setBorder(null);
+        summary_authors.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        summary_authors.setSelectionColor(new java.awt.Color(43, 47, 181));
         jScrollPane1.setViewportView(summary_authors);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 290, -1));
 
         confirm.setBackground(new java.awt.Color(43, 47, 181));
-        confirm.setFont(new java.awt.Font("Kohinoor Devanagari", 1, 14)); // NOI18N
+        confirm.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         confirm.setForeground(new java.awt.Color(255, 255, 255));
         confirm.setText("Confirmar");
         confirm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(43, 47, 181)));
@@ -272,6 +281,7 @@ public class windowAddResume extends javax.swing.JFrame {
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         if(valid){
             uploadSummary.add_summary(windowMain.hash, sum, file);
+            searchByKey.insert_new(windowMain.hash, windowMain.keyHash, sum);
             uploadSummary.hide();
             confirm_message.setVisible(true);
             confirm_message.setText("Carga y Guardado Exitoso");

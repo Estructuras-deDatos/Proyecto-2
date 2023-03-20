@@ -39,6 +39,8 @@ public class windowResumeDetails extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         summary_body = new javax.swing.JTextArea();
         Resumen = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        summary_title = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Detalles de la Investigación Seleccionada");
@@ -66,19 +68,19 @@ public class windowResumeDetails extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 2, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Investigación Seleccionada: \"nombre\"");
+        jLabel1.setText("Investigación Seleccionada: ");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 310, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto/interfaces/images/detailsImage.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, 50));
 
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 2, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setForeground(new java.awt.Color(43, 47, 181));
         jLabel5.setText("Autores:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 2, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setForeground(new java.awt.Color(43, 47, 181));
         jLabel6.setText("Palabras Claves:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, -1, -1));
 
@@ -93,6 +95,8 @@ public class windowResumeDetails extends javax.swing.JFrame {
         summary_keyw.setForeground(new java.awt.Color(0, 0, 0));
         summary_keyw.setRows(5);
         summary_keyw.setBorder(null);
+        summary_keyw.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        summary_keyw.setSelectionColor(new java.awt.Color(43, 47, 181));
         jScrollPane.setViewportView(summary_keyw);
 
         jPanel1.add(jScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, 290, -1));
@@ -106,16 +110,21 @@ public class windowResumeDetails extends javax.swing.JFrame {
         summary_authors.setForeground(new java.awt.Color(0, 0, 0));
         summary_authors.setRows(5);
         summary_authors.setBorder(null);
+        summary_authors.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        summary_authors.setSelectionColor(new java.awt.Color(43, 47, 181));
         jScrollPane1.setViewportView(summary_authors);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 290, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 290, -1));
 
-        jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane3.setBackground(new java.awt.Color(43, 47, 181));
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane3.setViewportBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         summary_body.setEditable(false);
-        summary_body.setBackground(new java.awt.Color(204, 204, 204));
+        summary_body.setBackground(new java.awt.Color(255, 255, 255));
         summary_body.setColumns(20);
         summary_body.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         summary_body.setForeground(new java.awt.Color(0, 0, 0));
@@ -123,14 +132,38 @@ public class windowResumeDetails extends javax.swing.JFrame {
         summary_body.setRows(5);
         summary_body.setWrapStyleWord(true);
         summary_body.setBorder(null);
+        summary_body.setCaretColor(new java.awt.Color(255, 255, 255));
+        summary_body.setMargin(new java.awt.Insets(10, 50, 10, 50));
+        summary_body.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        summary_body.setSelectionColor(new java.awt.Color(43, 47, 181));
         jScrollPane3.setViewportView(summary_body);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 540, 240));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 710, 240));
 
         Resumen.setFont(new java.awt.Font("Trebuchet MS", 2, 14)); // NOI18N
-        Resumen.setForeground(new java.awt.Color(0, 0, 0));
+        Resumen.setForeground(new java.awt.Color(43, 47, 181));
         Resumen.setText("Resumen");
-        jPanel1.add(Resumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, -1));
+        jPanel1.add(Resumen, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        summary_title.setBackground(new java.awt.Color(255, 255, 255));
+        summary_title.setColumns(20);
+        summary_title.setFont(new java.awt.Font("Trebuchet MS", 3, 18)); // NOI18N
+        summary_title.setForeground(new java.awt.Color(0, 0, 0));
+        summary_title.setLineWrap(true);
+        summary_title.setRows(5);
+        summary_title.setWrapStyleWord(true);
+        summary_title.setBorder(null);
+        summary_title.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        summary_title.setSelectionColor(new java.awt.Color(43, 47, 181));
+        jScrollPane2.setViewportView(summary_title);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 750, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
@@ -187,10 +220,12 @@ public class windowResumeDetails extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JScrollPane jScrollPane;
     public static javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     public static javax.swing.JTextArea summary_authors;
     public static javax.swing.JTextArea summary_body;
     public static javax.swing.JTextArea summary_keyw;
+    public static javax.swing.JTextArea summary_title;
     // End of variables declaration//GEN-END:variables
 }

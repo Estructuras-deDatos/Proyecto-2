@@ -1,5 +1,6 @@
 package proyecto.interfaces;
 import proyecto.Hash;
+import proyecto.searchByKey;
 import proyecto.uploadSummary;
 
 /**
@@ -11,7 +12,7 @@ import proyecto.uploadSummary;
 public class windowMain extends javax.swing.JFrame {
 
     public static Hash hash;
-    static public auxFunctions auxFunc;
+    public static Hash keyHash;
     
     /**
      * Constructor para la clase windowMain
@@ -22,7 +23,7 @@ public class windowMain extends javax.swing.JFrame {
         setSize(800, 600);
         setLocationRelativeTo(null);
         hash = uploadSummary.create_hash();
-        auxFunc = new auxFunctions();
+        keyHash = searchByKey.create_hash(hash);
     } //Cierre del constructor
 
 
