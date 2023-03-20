@@ -13,7 +13,7 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
     public static Summary selected;
 
     /**
-     * Constructor para la clase windowAnalyze
+     * Constructor para la clase windowAnalyzeResume
      */
     public windowAnalyzeResume() {
         setUndecorated(true);

@@ -158,9 +158,9 @@ public class windowMenu extends javax.swing.JFrame {
             this.hide();
             windowAuthors.show();
         } else {
-            JOptionPane.showMessageDialog(null, "No existe ningún resumen en el sistema!", "Atención!", JOptionPane.INFORMATION_MESSAGE,windowMain.auxFunc.setJOptionPaneImage("/Users/beatrizcardozo/Desktop/Proyecto 2/Proyecto-2/Proyecto-2/src/proyecto/interfaces/images/atentionImage.png"));
+            JOptionPane.showMessageDialog(null, "No existe ningún resumen en el sistema!", "Atención!", JOptionPane.INFORMATION_MESSAGE,auxFunctions.setJOptionPaneImage("/Users/beatrizcardozo/Desktop/Proyecto 2/Proyecto-2/Proyecto-2/src/proyecto/interfaces/images/atentionImage.png"));
         }
-        //Cierre del método
+//        Cierre del método
     }//GEN-LAST:event_searchByAuthorsButtonActionPerformed
 
     /**
@@ -193,7 +193,7 @@ public class windowMenu extends javax.swing.JFrame {
             this.hide();
             windowAnalyze.show();
         } else {
-            JOptionPane.showMessageDialog(null, "No existe ningún resumen en el sistema!", "Atención!", JOptionPane.INFORMATION_MESSAGE,windowMain.auxFunc.setJOptionPaneImage("/Users/beatrizcardozo/Desktop/Proyecto 2/Proyecto-2/Proyecto-2/src/proyecto/interfaces/images/atentionImage.png"));
+            JOptionPane.showMessageDialog(null, "No existe ningún resumen en el sistema!", "Atención!", JOptionPane.INFORMATION_MESSAGE,auxFunctions.setJOptionPaneImage("/Users/beatrizcardozo/Desktop/Proyecto 2/Proyecto-2/Proyecto-2/src/proyecto/interfaces/images/atentionImage.png"));
         }
         //Cierre del método
     }//GEN-LAST:event_analyzeResumeButtonActionPerformed
@@ -208,7 +208,7 @@ public class windowMenu extends javax.swing.JFrame {
             this.hide();
             windowKeywords.show();
         } else {
-            JOptionPane.showMessageDialog(null, "No existe ningún resumen en el sistema!", "Atención!", JOptionPane.INFORMATION_MESSAGE,windowMain.auxFunc.setJOptionPaneImage("/Users/beatrizcardozo/Desktop/Proyecto 2/Proyecto-2/Proyecto-2/src/proyecto/interfaces/images/atentionImage.png"));
+            JOptionPane.showMessageDialog(null, "No existe ningún resumen en el sistema!", "Atención!", JOptionPane.INFORMATION_MESSAGE,auxFunctions.setJOptionPaneImage("/Users/beatrizcardozo/Desktop/Proyecto 2/Proyecto-2/Proyecto-2/src/proyecto/interfaces/images/atentionImage.png"));
         }
         //Cierre del método
     }//GEN-LAST:event_searchByKeywordsButtonActionPerformed

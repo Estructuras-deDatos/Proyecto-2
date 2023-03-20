@@ -11,8 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.Normalizer;
 import java.util.Arrays;
 import java.util.logging.Level;
@@ -65,15 +63,24 @@ public class uploadSummary {
     }
     
    public static File[] get_directory(){
-       String dir = System.getProperty("user.dir");
-       System.out.println(dir);
-       File file = new File(dir+"\\initialize");
+       String OS = System.getProperty("os.name").toLowerCase();
+       File file=null;
+       if(OS.contains("win")){
+                String dir = System.getProperty("user.dir");
+                file = new File(dir+"\\initialize");
+       }else{
+          if(OS.contains("mac")||OS.contains("nux")){
+              String dir = System.getProperty("user.dir");
+              file = new File(dir+"//initialize");
+          }
+       }
        File f_list[] = null;
+       if(file!=null){
        if(!file.exists()){
            file.mkdirs();
        }else{
            f_list= file.listFiles();
-       }
+       }}
        return f_list;
    }
     
@@ -349,25 +356,27 @@ public class uploadSummary {
             int in = hash.sfold(key.toLowerCase(), hash.getCapacity());
             Summary aux = (Summary) hash.getVal()[in];
             if(aux!=null){
-            if(aux.getTitle().equalsIgnoreCase(key.toLowerCase())){
-                found = (Summary) hash.getVal()[in];
-            }
-            else{
-                int i =1;
-                int k=in;
-                while(i<hash.getCapacity()){
-                    k = (in + (i*i)) % hash.getCapacity();
-                    i++;
-                    aux=(Summary) hash.getVal()[k];
-                    if(aux!=null){
-                        if(aux.getTitle().equalsIgnoreCase(key.toLowerCase())){
-                            found = (Summary) hash.getVal()[k];
-                        }
+                if(aux.getTitle().equalsIgnoreCase(key.toLowerCase())){
+                    found = (Summary) hash.getVal()[in];
                 }
-            }
-        }
+                else{
+                    int i =1;
+                    int k=in;
+                    while(i<hash.getCapacity()){
+
+                        k = (in + (i*i)) % hash.getCapacity();
+                        i++;
+                        aux=(Summary) hash.getVal()[k];
+                        if(aux!=null){
+                            if(aux.getTitle().equalsIgnoreCase(key.toLowerCase())){
+                                found = (Summary) hash.getVal()[k];
+                            }
+                        }
+                    }
+                }       
  
-    }}
+        }
+    }
     return found;
     }
 }

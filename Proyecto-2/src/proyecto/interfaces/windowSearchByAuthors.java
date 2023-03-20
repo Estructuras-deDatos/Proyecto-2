@@ -141,11 +141,11 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButton1ActionPerformed
 
     private void selectResumeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectResumeButtonActionPerformed
-        if(authorsComboBox.getSelectedIndex() != -1 && windowMain.auxFunc.checkListSelec(resumeFoundList)){ 
-            windowResumeDetails resumeDetails = new windowResumeDetails();
-            resumeDetails.show();
-        }   
-    //Cierre del método
+//        if(authorsComboBox.getSelectedIndex() != -1 && windowMain.auxFunc.checkListSelec(resumeFoundList)){ 
+//            windowResumeDetails resumeDetails = new windowResumeDetails();
+//            resumeDetails.show();
+//        }   
+//    //Cierre del método
     }//GEN-LAST:event_selectResumeButtonActionPerformed
 
     /**

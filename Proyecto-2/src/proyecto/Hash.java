@@ -20,39 +20,7 @@ public class Hash {
         this.size = 0;
         this.val = new Object[capacity];
     }
-    /**
-     * Buscar el indice de un elemento en la hash table de los resumenes;
-     * @param key
-     * @param hash
-     * @return 
-     */
-    public int search_in(String key, Hash hash){
-        int found = -1;
-        if(!hash.isEmpty()){
-            int in = hash.sfold(key.toLowerCase(), hash.getCapacity());
-            Summary aux = (Summary) hash.getVal()[in];
-            if(aux!=null){
-            if(aux.getTitle().equalsIgnoreCase(key.toLowerCase())){
-                found = in;
-            }
-            else{
-                int i =1;
-                int k=in;
-                while(i<hash.getCapacity()){
-                    k = (in + (i*i)) % hash.getCapacity();
-                    i++;
-                    aux=(Summary) hash.getVal()[k];
-                    if(aux!=null){
-                        if(aux.getTitle().equalsIgnoreCase(key.toLowerCase())){
-                            found =k;
-                        }
-                }
-            }
-        }
- 
-    }}
-    return found;
-    }
+    
     
     public void insert(String key, Object value){
         int in = sfold(key, getCapacity());

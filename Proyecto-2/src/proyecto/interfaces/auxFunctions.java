@@ -16,27 +16,13 @@ import javax.swing.JTextField;
 
 public class auxFunctions {
     
-//    /**
-//     * Método que genera un arreglo de Strings con los nombres de los almacenes existentes.
-//     * @return Arreglo de Strings que consta de los identificadores de los almacenes.
-//     */
-//    public String [] arrayWarehouseNames(){
-//        String[] names = new String[windowMain.grafo.getList().getSize()];
-//        Nodo temporal = windowMain.grafo.getList().getpFirst();
-//        for (int i = 0; i < windowMain.grafo.getList().getSize(); i++) {
-//            names[i] = (String)temporal.getData();
-//            temporal = temporal.getNext();
-//        }
-//        return names;
-//    } //Cierre del método
-    
     /**
      * Método que valida que los caracteres que el usuario puede ingresar en un determinado JTextField sean letras. 
      * @param evt El parámetro evt contiene la información del evento llevado a cabo por el usuario.
      * * @param txtField El parámetro txtField define un objeto JTextField.
      * * @param caracters El parámetro caracters define un Integer que condiciona la cantidad de caracteres a ingresar.
      */
-    public void verifyString(java.awt.event.KeyEvent evt, JTextField txtField, int caracters){
+    public static void verifyString(java.awt.event.KeyEvent evt, JTextField txtField, int caracters){
         int key = evt.getKeyChar();
         boolean capletters = key >= 65 && key <= 90;
         boolean lowerletters = key >= 97 && key <= 122;
@@ -56,7 +42,7 @@ public class auxFunctions {
      * * @param txtField El parámetro txtField define un objeto JTextField.
      * * @param caracters El parámetro caracters define un Integer que condiciona la cantidad de caracteres a ingresar.
      */
-    public void verifyInt(java.awt.event.KeyEvent evt, JTextField txtField, int caracters){
+    public static void verifyInt(java.awt.event.KeyEvent evt, JTextField txtField, int caracters){
         int key = evt.getKeyChar();
         boolean numeros = key >= 48 && key <= 57;
         if (!numeros){
@@ -85,32 +71,17 @@ public class auxFunctions {
      * @param txtfield El parámetro txtfield define el campo de texto del que se toman los caracteres.
      * @param label El parámetro label define el JLabel a modificar.
      */
-    public void textFieldDidChange(JTextField txtfield, JLabel label) {
+    public static void textFieldDidChange(JTextField txtfield, JLabel label) {
         label.setText(txtfield.getText());
     } //Cierre del método
     
-    
-    /**
-     * Método que modifica un label según el elemento seleccionado en un jComboBox. 
-     * @param comboBox El parámetro comboBox define del JComboBox del que se tomara el elemento seleccionado.
-     * @param label El parámetro label define el JLabel del que se modificará el texto.
-     * @param txtArea El parámetro txtArea define donde se imprimiran los datos del elemento seleccionado.
-     * @param setString El parámetro setString define un dato tipo String.
-     */
-//    public void setDefault(JComboBox comboBox, JLabel label, JTextArea txtArea, String setString){
-//        String string = String.valueOf(comboBox.getSelectedItem());
-//        label.setText("Productos Disponibles en Almacen " + string + ":");
-//        windowStock.NodoWh = windowMain.grafo.getList().Search(string);
-//        txtArea.setText(windowStock.NodoWh.getStock().Print());
-//    }
-//    //Cierre del método
     
     /**
      * Método que devuelve el objeto ImageIcon para asignar a un JOptionPane. 
      * @param image El parámetro image define un String con la dirección donde se guarda el archivo de la imagen.
      * @return objeto ImageIcon del icono en la dirección de archivo.
      */
-    public ImageIcon setJOptionPaneImage(String image){
+    public static ImageIcon setJOptionPaneImage(String image){
         final ImageIcon icon = new ImageIcon(image);
         return icon;
     } //Cierre del método
@@ -120,7 +91,7 @@ public class auxFunctions {
      * @param textfield El parámetro textfield define un JTextField que se comprobará si está vacio.
      * @return boolean Dato tipo boolean que será el que indique el estado del textfield.
      */
-    public boolean checkTextField(JTextField textfield){
+    public static boolean checkTextField(JTextField textfield){
         if(textfield.getText().equals("")){
             return true;
         } else {
@@ -134,10 +105,10 @@ public class auxFunctions {
      * @param lista El parámetro list define la lista donde se verificará si existe un elemento seleccionado.
      * @return boolean, true si un elemento ha sido seleccionado y false en caso contrario.
      */
-    public boolean checkListSelec(JList list){
+    public static boolean checkListSelec(JList list){
         boolean selected = false;
         if(list.isSelectionEmpty()){
-            JOptionPane.showMessageDialog(null, "Importante: Debes seleccionar un elemento de la lista!.", "Alerta!",JOptionPane.INFORMATION_MESSAGE, windowMain.auxFunc.setJOptionPaneImage("/Users/beatrizcardozo/Desktop/Proyecto 2/Proyecto-2/Proyecto-2/src/proyecto/interfaces/images/searchKeyWords.png")); 
+            JOptionPane.showMessageDialog(null, "Importante: Debes seleccionar un elemento de la lista!.", "Alerta!",JOptionPane.INFORMATION_MESSAGE, auxFunctions.setJOptionPaneImage("/Users/beatrizcardozo/Desktop/Proyecto 2/Proyecto-2/Proyecto-2/src/proyecto/interfaces/images/searchKeyWords.png")); 
             selected = false;
         } else{
             selected = true;
