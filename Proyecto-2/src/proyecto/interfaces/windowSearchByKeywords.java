@@ -1,5 +1,4 @@
 package proyecto.interfaces;
-import javax.swing.JOptionPane;
 import proyecto.searchByKey;
 
 /**
@@ -18,6 +17,7 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
         setSize(800, 600);
         setLocationRelativeTo(null);
         searchByKey.hide();
+        select.
     } //Cierre del constructor
 
     @SuppressWarnings("unchecked")
@@ -172,8 +172,8 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
         windowMenu windowMenu = new windowMenu();
         this.hide();
         windowMenu.show();
-        //Cierre del método
-    }//GEN-LAST:event_backButtonActionPerformed
+    }//Cierre del método
+    //GEN-LAST:event_backButtonActionPerformed
 
     /**
      * Método invocado cuando el usuario realiza una acción, exitButton cuando ha sido presionado. Para cerrar el programa. 
@@ -181,16 +181,17 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
      */
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         System.exit(0);
-        //Cierre del método
-    }//GEN-LAST:event_exitButtonActionPerformed
+    }//Cierre del método
+    
+    //GEN-LAST:event_exitButtonActionPerformed
     
     
     /**
-     * Método invocado cuando el usuario realiza una acción, selectResumeButton cuando ha sido presionado. 
+     * Método invocado cuando el usuario realiza una acción, searchButton cuando ha sido presionado. 
      * @param evt El parámetro evt contiene la información del evento llevado a cabo por el usuario.
      */
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        String s = keywordTextField.getText();
+        String s = keywordTextField.getText().toLowerCase();
         if(s.isEmpty()){
             searchByKey.hide();
             fail_message.setVisible(true);
@@ -199,22 +200,23 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
             fail_select.setVisible(false);
             fail_message.setVisible(false);
             searchByKey.set_options(windowMain.keyHash, windowMain.hash);
-
-            //Aquí tomar texto e imprimir resultados
-            
         }
-        //Cierre del método
-    }//GEN-LAST:event_searchButtonActionPerformed
+    }//Cierre del método
+    //GEN-LAST:event_searchButtonActionPerformed
 
     /**
      * Método invocado cuando el usuario realiza una acción, keywordTextField cuando se ingresa un carácter dentro del JTextField. 
      * @param evt El parámetro evt contiene la información del evento llevado a cabo por el usuario.
      */
     private void keywordTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keywordTextFieldKeyTyped
-       
-        
-    }//GEN-LAST:event_keywordTextFieldKeyTyped
+       auxFunctions.verifyString(evt, keywordTextField, FRAMEBITS);
+    } //Cierre del metodo
+    //GEN-LAST:event_keywordTextFieldKeyTyped
 
+     /**
+     * Método invocado cuando el usuario realiza una acción, select cuando ha sido presionado. 
+     * @param evt El parámetro evt contiene la información del evento llevado a cabo por el usuario.
+     */
     private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
         if(resumeFoundList.getSelectedIndex() != -1 && auxFunctions.checkListSelec(resumeFoundList)){ 
             windowResumeDetails resumeDetails = new windowResumeDetails();
@@ -225,7 +227,8 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
             fail_select.setVisible(true);
             fail_select.setText("Por favor seleccione un resumen");
         }
-    }//GEN-LAST:event_selectActionPerformed
+    } //Cierre del método
+    //GEN-LAST:event_selectActionPerformed
 
     /**
      * @param args the command line arguments
