@@ -9,8 +9,9 @@ import static proyecto.functions.print_hashS;
 import proyecto.interfaces.windowMain;
 
 /**
- *
- * @author andre
+ * Representa la clase principal del proyecto.
+ * @author: andre
+ * @version: 22/03/2023
  */
 public class Proyecto2 {
 
@@ -40,4 +41,4 @@ public class Proyecto2 {
 
     }
     
-}
+} //Cierre de la clase
