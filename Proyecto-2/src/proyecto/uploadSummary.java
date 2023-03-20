@@ -22,8 +22,9 @@ import javax.swing.JOptionPane;
 import proyecto.interfaces.windowAddResume;
 
 /**
- *
- * @author andre
+ * Esta clase define los métodos necesarios para cargar un txt con un resumen específico. 
+ * @author: andre
+ * @version: 22/03/2023
  */
 public class uploadSummary {
     
@@ -379,4 +380,4 @@ public class uploadSummary {
     }
     return found;
     }
-}
+} //Cierre de la clase
