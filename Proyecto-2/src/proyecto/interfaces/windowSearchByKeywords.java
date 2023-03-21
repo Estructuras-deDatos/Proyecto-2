@@ -50,7 +50,6 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
         backButton.setText("Regresar");
         backButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         backButton.setBorderPainted(false);
-        backButton.setOpaque(true);
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -63,7 +62,6 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
         exitButton.setForeground(new java.awt.Color(255, 255, 255));
         exitButton.setText("X");
         exitButton.setBorderPainted(false);
-        exitButton.setOpaque(true);
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitButtonActionPerformed(evt);
@@ -82,6 +80,11 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
         keywordTextField.setForeground(new java.awt.Color(0, 0, 0));
         keywordTextField.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         keywordTextField.setSelectionColor(new java.awt.Color(43, 47, 181));
+        keywordTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keywordTextFieldActionPerformed(evt);
+            }
+        });
         keywordTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 keywordTextFieldKeyTyped(evt);
@@ -101,7 +104,6 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
         searchButton.setActionCommand("");
         searchButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         searchButton.setBorderPainted(false);
-        searchButton.setOpaque(true);
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
@@ -172,7 +174,7 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
         this.hide();
         windowMenu.show();
     }//Cierre del método
-    //GEN-LAST:event_backButtonActionPerformed
+//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * Método invocado cuando el usuario realiza una acción, exitButton cuando ha sido presionado. Para cerrar el programa. 
@@ -182,7 +184,7 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
         System.exit(0);
     }//Cierre del método
     
-    //GEN-LAST:event_exitButtonActionPerformed
+//GEN-LAST:event_exitButtonActionPerformed
     
     
     /**
@@ -201,7 +203,7 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
             searchByKey.set_options(windowMain.keyHash, windowMain.hash);
         }
     }//Cierre del método
-    //GEN-LAST:event_searchButtonActionPerformed
+//GEN-LAST:event_searchButtonActionPerformed
 
     /**
      * Método invocado cuando el usuario realiza una acción, keywordTextField cuando se ingresa un carácter dentro del JTextField. 
@@ -210,7 +212,7 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
     private void keywordTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keywordTextFieldKeyTyped
        auxFunctions.verifyString(evt, keywordTextField, FRAMEBITS);
     } //Cierre del metodo
-    //GEN-LAST:event_keywordTextFieldKeyTyped
+//GEN-LAST:event_keywordTextFieldKeyTyped
 
      /**
      * Método invocado cuando el usuario realiza una acción, select cuando ha sido presionado. 
@@ -227,7 +229,11 @@ public class windowSearchByKeywords extends javax.swing.JFrame {
             fail_select.setText("Por favor seleccione un resumen");
         }
     } //Cierre del método
-    //GEN-LAST:event_selectActionPerformed
+//GEN-LAST:event_selectActionPerformed
+
+    private void keywordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keywordTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_keywordTextFieldActionPerformed
 
     /**
      * @param args the command line arguments

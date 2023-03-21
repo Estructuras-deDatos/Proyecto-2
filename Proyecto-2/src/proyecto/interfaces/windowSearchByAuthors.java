@@ -51,7 +51,6 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
         backButton.setText("Regresar");
         backButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         backButton.setBorderPainted(false);
-        backButton.setOpaque(true);
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -64,7 +63,6 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
         exitButton1.setForeground(new java.awt.Color(255, 255, 255));
         exitButton1.setText("X");
         exitButton1.setBorderPainted(false);
-        exitButton1.setOpaque(true);
         exitButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitButton1ActionPerformed(evt);
@@ -89,7 +87,6 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
         selectResumeButton.setText("Seleccionar Investigación");
         selectResumeButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         selectResumeButton.setBorderPainted(false);
-        selectResumeButton.setOpaque(true);
         selectResumeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectResumeButtonActionPerformed(evt);
@@ -101,7 +98,11 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
         authorsComboBox.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         authorsComboBox.setForeground(new java.awt.Color(0, 0, 0));
         authorsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Autor 1", "Autor 2", "Autor 3", "Autor 4" }));
-        authorsComboBox.setOpaque(true);
+        authorsComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                authorsComboBoxActionPerformed(evt);
+            }
+        });
         jPanel1.add(authorsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 320, 30));
 
         resumeFoundList.setBackground(new java.awt.Color(204, 204, 204));
@@ -135,7 +136,7 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
         this.hide();
         windowMenu.show();
     } //Cierre del metodo
-    //GEN-LAST:event_backButtonActionPerformed
+//GEN-LAST:event_backButtonActionPerformed
 
      /**
      * Método invocado cuando el usuario realiza una acción, exitButton cuando ha sido presionado. Para cerrar el programa. 
@@ -144,7 +145,7 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
     private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
         System.exit(0);
     } //Cierre del metodo
-    //GEN-LAST:event_exitButton1ActionPerformed
+//GEN-LAST:event_exitButton1ActionPerformed
 
      /**
      * Método invocado cuando el usuario realiza una acción, selectResumeButton cuando ha sido presionado. Para cerrar el programa. 
@@ -157,6 +158,10 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
 //        }   
 //    //Cierre del método
     }//GEN-LAST:event_selectResumeButtonActionPerformed
+
+    private void authorsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authorsComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_authorsComboBoxActionPerformed
 
     /**
      * @param args the command line arguments

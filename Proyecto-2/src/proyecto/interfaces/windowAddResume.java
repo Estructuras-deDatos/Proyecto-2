@@ -2,6 +2,8 @@ package proyecto.interfaces;
 import java.io.File;
 import proyecto.Hash;
 import proyecto.Summary;
+import static proyecto.interfaces.windowMain.authorHash;
+import proyecto.searchByAuthor;
 import proyecto.searchByKey;
 import proyecto.uploadSummary;
 
@@ -282,6 +284,7 @@ public class windowAddResume extends javax.swing.JFrame {
         if(valid){
             uploadSummary.add_summary(windowMain.hash, sum, file);
             searchByKey.insert_new(windowMain.hash, windowMain.keyHash, sum);
+            searchByAuthor.insert_new(windowMain.hash, windowMain.authorHash, sum);
             uploadSummary.hide();
             confirm_message.setVisible(true);
             confirm_message.setText("Carga y Guardado Exitoso");
