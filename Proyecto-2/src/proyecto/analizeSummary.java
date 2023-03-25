@@ -17,12 +17,16 @@ import javax.swing.table.DefaultTableModel;
 import proyecto.interfaces.windowAnalyzeResume;
 
 /**
- *
+ * Esta clase define las funciones necesarias para analizar un resumen registrado en el sistema
  * @author andre
+ * @version 25/03/2023
  */
 public class analizeSummary {
     
-    
+    /**
+     * 
+     * @param sum El resumen que se desea analizar
+     */
     public static void visualize(Summary sum){
         windowAnalyzeResume.sel_title.setVisible(true);
         windowAnalyzeResume.sel_title.setText(uploadSummary.capitalize(sum.getTitle()));
@@ -32,6 +36,11 @@ public class analizeSummary {
         windowAnalyzeResume.jLabel5.setVisible(true);
         
     }
+    
+    /**
+     * 
+     * @param sum 
+     */
     public static void analyze_summary(Summary sum){
         visualize(sum);
         String[] keyWords = sum.getKeyw();

@@ -11,6 +11,7 @@ package proyecto;
  */
 public class Nodo {
     
+    //Campos de la Clase
     private String key;
     private String index;
 

@@ -4,6 +4,14 @@
  */
 package proyecto.interfaces;
 import javax.swing.JOptionPane;
+import proyecto.Nodo;
+import static proyecto.interfaces.windowMain.authorHash;
+import static proyecto.interfaces.windowSearchByKeywords.fail_message;
+import static proyecto.interfaces.windowSearchByKeywords.fail_select;
+import static proyecto.interfaces.windowSearchByKeywords.keywordTextField;
+import static proyecto.interfaces.windowSearchByKeywords.resumeFoundList;
+import proyecto.searchByAuthor;
+import proyecto.searchByKey;
 
 /**
  * Esta clase, JFrame window, define objetos que interactuan con el usuario para la búsqueda de investigaciones por autor. 
@@ -12,6 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class windowSearchByAuthors extends javax.swing.JFrame {
 
+    public static String selectedAuthor;
     /**
      * Constructor para la clase windowSearchByAuthors
     */
@@ -20,6 +29,11 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
         initComponents();
         setSize(800, 600);
         setLocationRelativeTo(null);
+        selectedAuthor = "";
+        searchByAuthor.show_options();
+        hide();
+        
+        
     } //Cierre del constructor
 
 
@@ -32,12 +46,13 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
         exitButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        LabelAuthor = new javax.swing.JLabel();
         selectResumeButton = new javax.swing.JButton();
         authorsComboBox = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         resumeFoundList = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
+        fail_select = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,10 +91,10 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 580, -1));
 
-        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Investigaciones encotradas de \"AUTOR\":");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
+        LabelAuthor.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        LabelAuthor.setForeground(new java.awt.Color(0, 0, 0));
+        LabelAuthor.setText("Investigaciones encotradas de \"AUTOR\":");
+        jPanel1.add(LabelAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
 
         selectResumeButton.setBackground(new java.awt.Color(43, 47, 181));
         selectResumeButton.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
@@ -105,7 +120,7 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
         });
         jPanel1.add(authorsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 320, 30));
 
-        resumeFoundList.setBackground(new java.awt.Color(204, 204, 204));
+        resumeFoundList.setBackground(new java.awt.Color(255, 255, 255));
         resumeFoundList.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         resumeFoundList.setForeground(new java.awt.Color(0, 0, 0));
         resumeFoundList.setModel(new javax.swing.AbstractListModel<String>() {
@@ -121,6 +136,16 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Seleccione un autor, para conocer sus resumenes registrados:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
+
+        fail_select.setFont(new java.awt.Font("Trebuchet MS", 3, 12)); // NOI18N
+        fail_select.setForeground(new java.awt.Color(102, 0, 0));
+        fail_select.setText("Por favor seleccione un resumen");
+        fail_select.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                fail_selectPropertyChange(evt);
+            }
+        });
+        jPanel1.add(fail_select, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 540, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
@@ -152,16 +177,39 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
      * @param evt El parámetro evt contiene la información del evento llevado a cabo por el usuario.
      */
     private void selectResumeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectResumeButtonActionPerformed
-//        if(authorsComboBox.getSelectedIndex() != -1 && windowMain.auxFunc.checkListSelec(resumeFoundList)){ 
-//            windowResumeDetails resumeDetails = new windowResumeDetails();
-//            resumeDetails.show();
-//        }   
-//    //Cierre del método
-    }//GEN-LAST:event_selectResumeButtonActionPerformed
+         if(resumeFoundList.getSelectedIndex() != -1 && auxFunctions.checkListSelec(resumeFoundList)){ 
+            windowResumeDetails resumeDetails = new windowResumeDetails();
+            resumeDetails.show();
+            searchByKey.make_details_visible(resumeFoundList.getSelectedValue(), windowMain.hash);
+        } else{
+            fail_select.setVisible(true);
+            fail_select.setText("Por favor seleccione un resumen");
+        }
 
+    }//GEN-LAST:event_selectResumeButtonActionPerformed
+    
+    /**
+     * Metodo invocado cuando el usuario selecciona una opcion del ComboBox
+     * @param evt El parametro evt contiene la información del evento llevado a cabo por el usuario.
+     */
     private void authorsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authorsComboBoxActionPerformed
         // TODO add your handling code here:
+        if(authorsComboBox.getSelectedItem() != null){
+        selectedAuthor = authorsComboBox.getSelectedItem().toString();
+        if(selectedAuthor.isEmpty()){
+            hide();
+        } else {
+            fail_select.setVisible(false);
+            searchByAuthor.set_options(windowMain.authorHash, windowMain.hash);
+          }
+        }
+        
     }//GEN-LAST:event_authorsComboBoxActionPerformed
+
+     
+    private void fail_selectPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fail_selectPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fail_selectPropertyChange
 
     /**
      * @param args the command line arguments
@@ -199,16 +247,17 @@ public class windowSearchByAuthors extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> authorsComboBox;
+    public static javax.swing.JLabel LabelAuthor;
+    public static javax.swing.JComboBox<String> authorsComboBox;
     private javax.swing.JButton backButton;
     private javax.swing.JButton exitButton1;
+    public static javax.swing.JLabel fail_select;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JList<String> resumeFoundList;
+    public static javax.swing.JList<String> resumeFoundList;
     private javax.swing.JButton selectResumeButton;
     // End of variables declaration//GEN-END:variables
 } //Cierre de la clase

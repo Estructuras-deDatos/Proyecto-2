@@ -1,5 +1,7 @@
 package proyecto.interfaces;
+import javax.swing.JOptionPane;
 import proyecto.Hash;
+import proyecto.Nodo;
 import proyecto.searchByAuthor;
 import proyecto.searchByKey;
 import proyecto.uploadSummary;
@@ -26,6 +28,7 @@ public class windowMain extends javax.swing.JFrame {
         hash = uploadSummary.create_hash();
         keyHash = searchByKey.create_hash(hash);
         authorHash = searchByAuthor.create_hash(hash);
+        
     } //Cierre del constructor
 
 

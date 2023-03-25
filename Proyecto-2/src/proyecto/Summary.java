@@ -5,16 +5,21 @@
 package proyecto;
 
 /**
- *
- * @author andre
+ * Clase que define los resumenes que se almacenaran en el sistema
+ * @author andre 
+ * @version 25/03/2023
  */
 public class Summary {
     
+    //Campos de la clase
     private String title;
     private String[] authors;
     private String body;
     private String[] keyw;
 
+    /**
+     * Constructor de la clase
+     */
     public Summary() {
         this.title = "";
         this.authors = null;
@@ -22,6 +27,10 @@ public class Summary {
         this.keyw = null;
     }
 
+    /**
+     * Metodo para obtener el string con la informacion de un resumen
+     * @return La cadena con la informacion referida para poder imprimirla
+     */
     public String print(){
         
         String toPrint=getTitle()+"\n";

@@ -28,6 +28,10 @@ import proyecto.interfaces.windowAddResume;
  */
 public class uploadSummary {
     
+   /**
+    * Metodo para crear el HashTable que contiene los resumenes
+    * @return El HashTable creado
+    */
    public static Hash create_hash(){
         
         File[] f_list = get_directory();
@@ -49,7 +53,7 @@ public class uploadSummary {
         }
            
     }
-    
+ 
     public static int get_capacity(int len){
         int size = (int) (len*2.5);
         size++;

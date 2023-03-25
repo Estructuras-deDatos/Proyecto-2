@@ -11,7 +11,7 @@ package proyecto;
  */
 public class Hash {
     
-    
+    //Campos de la clase
     private final int capacity;
     private int size;
     private final Object[] val;

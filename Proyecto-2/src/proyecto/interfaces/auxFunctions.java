@@ -17,6 +17,33 @@ import javax.swing.JTextField;
 public class auxFunctions {
     
     /**
+     * Metodo para poner en Mayuscula la primera letra de cada palabra de una cadena
+     * @param text La cadena a modificar
+     * @return La cadena modificada
+     */
+    public static String convertToTitleCase(String text) {
+    if (text == null || text.isEmpty()) {
+        return text;
+    }
+
+    StringBuilder converted = new StringBuilder();
+
+    boolean convertNext = true;
+    for (char ch : text.toCharArray()) {
+        if (Character.isSpaceChar(ch)) {
+            convertNext = true;
+        } else if (convertNext) {
+            ch = Character.toTitleCase(ch);
+            convertNext = false;
+        } else {
+            ch = Character.toLowerCase(ch);
+        }
+        converted.append(ch);
+    }
+
+    return converted.toString();
+}
+    /**
      * Método que valida que los caracteres que el usuario puede ingresar en un determinado JTextField sean letras. 
      * @param evt El parámetro evt contiene la información del evento llevado a cabo por el usuario.
      * * @param txtField El parámetro txtField define un objeto JTextField.
