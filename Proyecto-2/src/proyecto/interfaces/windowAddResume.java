@@ -1,8 +1,6 @@
 package proyecto.interfaces;
 import java.io.File;
-import proyecto.Hash;
 import proyecto.Summary;
-import static proyecto.interfaces.windowMain.authorHash;
 import proyecto.searchByAuthor;
 import proyecto.searchByKey;
 import proyecto.uploadSummary;
@@ -70,7 +68,6 @@ public class windowAddResume extends javax.swing.JFrame {
         exitButton.setForeground(new java.awt.Color(255, 255, 255));
         exitButton.setText("X");
         exitButton.setBorderPainted(false);
-        exitButton.setOpaque(true);
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitButtonActionPerformed(evt);
@@ -84,7 +81,6 @@ public class windowAddResume extends javax.swing.JFrame {
         backButton.setText("Regresar");
         backButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         backButton.setBorderPainted(false);
-        backButton.setOpaque(true);
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -104,7 +100,6 @@ public class windowAddResume extends javax.swing.JFrame {
         attachSummary.setText("Adjuntar");
         attachSummary.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         attachSummary.setBorderPainted(false);
-        attachSummary.setOpaque(true);
         attachSummary.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 attachSummaryActionPerformed(evt);
@@ -117,7 +112,6 @@ public class windowAddResume extends javax.swing.JFrame {
         path.setFont(new java.awt.Font("Trebuchet MS", 2, 12)); // NOI18N
         path.setForeground(new java.awt.Color(43, 47, 181));
         path.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        path.setOpaque(true);
         jPanel1.add(path, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 400, 30));
 
         fail_message.setFont(new java.awt.Font("Trebuchet MS", 3, 12)); // NOI18N
@@ -186,7 +180,7 @@ public class windowAddResume extends javax.swing.JFrame {
         summary_body.setSelectionColor(new java.awt.Color(43, 47, 181));
         jScrollPane3.setViewportView(summary_body);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 540, 170));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 620, 170));
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
@@ -210,7 +204,6 @@ public class windowAddResume extends javax.swing.JFrame {
         confirm.setText("Confirmar");
         confirm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(43, 47, 181)));
         confirm.setBorderPainted(false);
-        confirm.setOpaque(true);
         confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmActionPerformed(evt);

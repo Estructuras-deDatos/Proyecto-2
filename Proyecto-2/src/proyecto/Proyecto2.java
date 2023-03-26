@@ -5,7 +5,6 @@
 package proyecto;
 
 
-import static proyecto.functions.print_hashS;
 import proyecto.interfaces.windowMain;
 
 /**

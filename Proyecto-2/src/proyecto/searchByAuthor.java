@@ -9,8 +9,6 @@ import static proyecto.interfaces.windowMain.authorHash;
 import proyecto.interfaces.windowResumeDetails;
 import proyecto.interfaces.windowSearchByAuthors;
 import static proyecto.interfaces.windowSearchByAuthors.authorsComboBox;
-import static proyecto.interfaces.windowSearchByAuthors.fail_select;
-import static proyecto.interfaces.windowSearchByAuthors.resumeFoundList;
 
 
 /**
@@ -33,11 +31,25 @@ public class searchByAuthor {
         }
         authorsComboBox.addActionListener(authorsComboBox);
     }
+    /**
+     * Metodo para mostrar los elementos de la interfaz despues de la seleccion
+     */
+    public static void show(){
+        windowSearchByAuthors.jScrollPane1.setVisible(true);
+         windowSearchByAuthors.resumeFoundList.setVisible(true);
+        windowSearchByAuthors.selectResumeButton.setVisible(true);
+         windowSearchByAuthors.LabelAuthor.setVisible(true);
+    }
     
-    
-    public void hide(){
-        fail_select.setVisible(false);
-        resumeFoundList.setVisible(false);
+    /**
+     * Metodo para esconder los elementos de la interfaz 
+     */
+    public static void hide(){
+        windowSearchByAuthors.jScrollPane1.setVisible(false);
+        windowSearchByAuthors.resumeFoundList.setVisible(false);
+        windowSearchByAuthors.selectResumeButton.setVisible(false);
+        windowSearchByAuthors.fail_select.setVisible(false);
+        windowSearchByAuthors.LabelAuthor.setVisible(false);
     }
     /**
      * Metodo utilizado para visualizar los detalles del resumen seleccionado.
@@ -62,6 +74,7 @@ public class searchByAuthor {
        String key = windowSearchByAuthors.selectedAuthor;
         String titles = get_titles(authorHash, key, sumHash);
         if(!titles.isEmpty()){
+            show();
             windowSearchByAuthors.resumeFoundList.setVisible(true);
             windowSearchByAuthors.LabelAuthor.setText("Investigaciones de " + windowSearchByAuthors.selectedAuthor + ": ");
             windowSearchByAuthors.resumeFoundList.setListData(titles.split(","));
@@ -163,7 +176,8 @@ public class searchByAuthor {
             if(aux!=null){
                 String[] authors = aux.getAuthors();
                 for(String author : authors){
-                    insert_key_author(keyHash, author, i);
+                    String a = remove_alpha(author);
+                    insert_key_author(keyHash, a, i);
                 }
             }
         }
@@ -201,16 +215,22 @@ public class searchByAuthor {
      * @param in 
      */
     public static void insert_key_author(Hash authorHash, String author, int in){
-        Object[] result = search_exists(authorHash,author);
+        String a = remove_alpha(author);
+        Object[] result = search_exists(authorHash,a);
         boolean exists = (boolean) result[0];
         Nodo node;
         if(!exists){
-            node = new Nodo(author);
+            node = new Nodo(a);
             node.setIndex(String.valueOf(in)); 
-            authorHash.insert(author, node);
+            authorHash.insert(a, node);
         }else{
             node= (Nodo) result[1];
             node.setIndex(String.valueOf(in));
         }
     }
+    
+     public static String remove_alpha(String s){
+         String r = s.replaceAll("-", " ");
+         return r;
+     }
 }

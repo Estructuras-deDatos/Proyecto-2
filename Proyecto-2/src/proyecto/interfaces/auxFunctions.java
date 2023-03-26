@@ -1,11 +1,8 @@
 package proyecto.interfaces;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -129,7 +126,7 @@ public class auxFunctions {
     
     /**
      * Método que verifica si selecciono un elemento de la lista. 
-     * @param lista El parámetro list define la lista donde se verificará si existe un elemento seleccionado.
+     * @param list El parámetro list define la lista donde se verificará si existe un elemento seleccionado.
      * @return boolean, true si un elemento ha sido seleccionado y false en caso contrario.
      */
     public static boolean checkListSelec(JList list){

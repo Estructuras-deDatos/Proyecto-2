@@ -53,8 +53,13 @@ public class uploadSummary {
         }
            
     }
- 
+   /**
+    * Metodo para obtener el siguiente numero primo correspondiente al numero dado
+    * @param len - numero base 
+    * @return siguiente numero primo
+    */
     public static int get_capacity(int len){
+        if(len!=0){
         int size = (int) (len*2.5);
         size++;
         for (int i = 2; i < size; i++) {
@@ -65,7 +70,15 @@ public class uploadSummary {
          }
         }
         return size;
+        }else{
+            return 11;
+        }
     }
+    
+    /**
+     * Metodo para obtener los archivos de la carpeta de archivos precargados del sistema
+     * @return Arreglo de archivos que se encuentran en el directorio
+     */
     
    public static File[] get_directory(){
        String OS = System.getProperty("os.name").toLowerCase();
@@ -89,6 +102,11 @@ public class uploadSummary {
        return f_list;
    }
     
+   /**
+    * Metodo para revisar si el archivo dado es valido
+    * @param file
+    * @return Objeto resumen creado a partir del texto
+    */
    public static Summary validate_txt(File file){
        if(file!=null){
            String read = read_txt(file);
@@ -102,7 +120,10 @@ public class uploadSummary {
        }
        return null;
    }
-   
+   /**
+    * Metodo para mostrar los detalles del resumen que se quiere cargar en el sistema
+    * @param newSum 
+    */
    public static void make_visible(Summary newSum){
        windowAddResume.fail_message.setVisible(false);
        windowAddResume.jLabel5.setVisible(true);
@@ -118,6 +139,9 @@ public class uploadSummary {
        windowAddResume.summary_body.setText(newSum.getBody());
        windowAddResume.confirm_message.setVisible(true);
    }
+   /**
+    * Metodo para esconder componentes de la interfaz grafica
+    */
    public static void hide(){
        windowAddResume.summary_title.setVisible(false);
         windowAddResume.jLabel5.setVisible(false);
@@ -131,11 +155,22 @@ public class uploadSummary {
         windowAddResume.summary_body.setText("");
    }
    
+   /**
+    * Metodo para agregar un nuevo resumen a la Hash Table y guardar el archivo en el directorio de precargados
+    * @param hash
+    * @param sum
+    * @param file 
+    */
    public static void add_summary(Hash hash, Summary sum, File file){
        hash.insert(sum.getTitle(), sum);
        save_file(file, hash.getSize()); 
    }
-   
+   /**
+    * Metodo para cargar un nuevo resumen a la Hash Table
+    * @param hash
+    * @param file
+    * @return arreglo con un booleano y el objeto de resumen 
+    */
     public static Object[] load_summary(Hash hash, File file){
         Object[] result = new Object[2];
         if(file!=null){
@@ -168,7 +203,11 @@ public class uploadSummary {
         }
         return result;
     }
-    
+    /**
+     * Metodo para hacer mayuscula todos los elementos de un arreglo
+     * @param array
+     * @return String con todas los elementos de un arreglo en mayusculas
+     */
     public static String array_readable(String[] array){
         String printable="";
         for(String word:array){
@@ -180,6 +219,11 @@ public class uploadSummary {
         } 
         return printable;
     }
+    /**
+     * Metodo para hacer un string en mayusculas como un titulo
+     * @param s
+     * @return 
+     */
     public static String capitalize(String s){
         String[] split = s.split(" ");
         String print ="";
@@ -188,15 +232,27 @@ public class uploadSummary {
         }
         return print;
     }
-    
+    /**
+     * Metodo para guardar el archivo dado en la carpeta de archivos precargados
+     * @param attached
+     * @param num 
+     */
     public static void save_file(File attached, int num){
         String f_name = "sum"+String.valueOf(num)+".txt";
         String dir = System.getProperty("user.dir");
-        File copy = new File(dir+"\\initialize\\"+f_name);
-       File f_list[] = null;
+        String OS = System.getProperty("os.name").toLowerCase();
+        File file=null;
+        if(OS.contains("win")){
+               file = new File(dir+"\\initialize\\"+f_name);
+        }else{
+          if(OS.contains("mac")||OS.contains("nux")){
+              file = new File(dir+"//initialize//"+f_name);
+          }
+       }
+        File f_list[] = null;
          try {
              FileInputStream in = new FileInputStream(attached);
-             FileOutputStream out = new FileOutputStream(copy);
+             FileOutputStream out = new FileOutputStream(file);
              int n;
              while((n=in.read())!=-1){
                  out.write(n);
@@ -217,6 +273,10 @@ public class uploadSummary {
         
     }
     
+    /**
+     * Metodo para adjuntar un archivo para cargar el archivo
+     * @return 
+     */
     public static File attach_file(){
         JFileChooser chooser = new JFileChooser();
         File file=null;
@@ -234,6 +294,11 @@ public class uploadSummary {
         return file;
     }
     
+    /**
+     * Metodo para leer el archivo que contiene la nueva informacion
+     * @param file
+     * @return un String con toda la informacion del archivo
+     */
     public static String read_txt(File file){
         String read = "";
         String line;
@@ -255,12 +320,21 @@ public class uploadSummary {
          return read;
         }
         
+    /**
+     * Metodo para reemplazar los acentos de las palabras
+     * @param s
+     * @return String con los arreglos hechos
+     */
     public static String replace_accents(String s){
        String normalizedWord = Normalizer.normalize(s, Normalizer.Form.NFD);
        s = normalizedWord.replaceAll("\\p{M}", "");
        return s;
     }
-    
+    /**
+     * Metodo para crear un objeto resumen
+     * @param content
+     * @return Objeto Resumen
+     */
     public static Summary create_summary(String[] content){
       Summary newSum = new Summary();
       String[] authors = content[1].split(",");
@@ -278,7 +352,11 @@ public class uploadSummary {
       
       return newSum;
     }
-    
+    /**
+     * Metodo para revisar que el texto en el archivo corresponde a un resumen valido
+     * @param s
+     * @return arreglo de Strings que contiene todos los elementos 
+     */
     public static String[] check_txt(String s){
         String[] content = null;
         if(!s.isEmpty()){
@@ -309,10 +387,12 @@ public class uploadSummary {
                         body = split_lines[i];
                     }
                 }
+                authors=authors.replace("autores,", "");
+                body=body.replace("resumen", "");
                 if(!authors.isEmpty()&&!body.isEmpty()&&!keyW.isEmpty()){
                     content= new String[4];
                     content[0]=title;
-                    content[1]=authors.replace("autores,", "");
+                    content[1]=authors;
                     content[2]=body;
                     content[3]=keyW;
                 }
@@ -322,7 +402,12 @@ public class uploadSummary {
         }
         return content;
     }
-    
+    /**
+     * Metodo para revisar si existe un archivo con el mismo titulo y autores 
+     * @param sum
+     * @param hash
+     * @return booleano correspondiente
+     */
     public static boolean check_if_loaded(Summary sum, Hash hash){
         Summary match = search_sum(sum.getTitle(), hash);
         if(match!=null){
@@ -331,6 +416,11 @@ public class uploadSummary {
             return false;
         }
     }
+    /**
+     * Revisa si un archivo tiene informacion valida
+     * @param s
+     * @return booleano si cumple con la condicion
+     */
     
     public static boolean check_if_writing(String s){
         String reg= "[^a-zA-Z0-9]+";
@@ -344,17 +434,12 @@ public class uploadSummary {
         
     }
     
-    public static String print_hashS(Hash hash){
-        String toPrint="";
-        for (int i=0; i<hash.getCapacity();i++){
-            if(hash.getVal()[i]!=null){
-            Summary sum= (Summary)hash.getVal()[i];
-            toPrint+=sum.print()+"\n";
-            }
-        }
-        return toPrint;
-    }
-    
+    /**
+     * Metodo para buscar un resumen a partir de la llave dada
+     * @param key
+     * @param hash
+     * @return el objeto resumen que corresponde
+     */
     public static Summary search_sum(String key, Hash hash){
         Summary found = null;
         if(!hash.isEmpty()){

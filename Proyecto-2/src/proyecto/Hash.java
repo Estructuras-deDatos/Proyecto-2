@@ -19,6 +19,7 @@ public class Hash {
     
      /**
      * Constructor para la clase Hash
+     * @param capacity - Tamaño de la Hash Table
      */
     public Hash(int capacity) {
         this.capacity = capacity;
@@ -26,8 +27,13 @@ public class Hash {
         this.val = new Object[capacity];
     } //Cierre del constructor
     
-    
+    /**
+     * Método para insertar un nuevo elemento en la Hash Table
+     * @param key - la llave del elemento
+     * @param value - el valor a guardar
+     */
     public void insert(String key, Object value){
+        if(getSize()<getCapacity()){
         int in = sfold(key, getCapacity());
         if (getVal()[in]==null){
             getVal()[in]=value;
@@ -43,7 +49,15 @@ public class Hash {
             }
         }
         size++;
+        }
     }
+    
+    /**
+     * Método de hashing para los elementos que se van a guardar en la tabla, basado en string folding
+     * @param s - llave del elemento
+     * @param M - capacidad de la Hash table
+     * @return el indice que corresponde a la llave en la Hash Table
+     */
     
     public int sfold(String s, int M){
         long sum = 0, mul = 1;
@@ -55,26 +69,29 @@ public class Hash {
     }
 
     /**
-     * @return the capacity
+     * @return el numero maximo de elementos que puede entrar en la Hash Table
      */
     public int getCapacity() {
         return capacity;
     }
 
     /**
-     * @return the size
+     * @return el numero de elementos guardados en el elemento
      */
     public int getSize() {
         return size;
     }
 
     /**
-     * @return the val
+     * @return el arreglo que contiene todos los elementos de la Hash Table
      */
     public Object[] getVal() {
         return val;
     }
-    
+    /**
+     * Metodo para revisar si la Hash Table esta vacia
+     * @return booleano correspondiente
+     */
     public boolean isEmpty(){
         return size==0;
     }

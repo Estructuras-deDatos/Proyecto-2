@@ -114,6 +114,8 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
         sel_authors.setForeground(new java.awt.Color(0, 0, 0));
         sel_authors.setRows(5);
         sel_authors.setBorder(null);
+        sel_authors.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        sel_authors.setSelectionColor(new java.awt.Color(43, 47, 181));
         jScrollPane2.setViewportView(sel_authors);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 400, -1));
@@ -156,7 +158,7 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
         table.setShowGrid(true);
         jScrollPane3.setViewportView(table);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 330, 180));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 380, 380, 180));
 
         backButton.setBackground(new java.awt.Color(43, 47, 181));
         backButton.setFont(new java.awt.Font("Kohinoor Devanagari", 1, 14)); // NOI18N
@@ -189,6 +191,8 @@ public class windowAnalyzeResume extends javax.swing.JFrame {
         sel_title.setRows(5);
         sel_title.setWrapStyleWord(true);
         sel_title.setBorder(null);
+        sel_title.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        sel_title.setSelectionColor(new java.awt.Color(43, 47, 181));
         jScrollPane4.setViewportView(sel_title);
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 390, 80));

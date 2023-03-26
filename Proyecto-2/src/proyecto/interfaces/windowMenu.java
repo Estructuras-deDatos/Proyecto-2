@@ -132,7 +132,8 @@ public class windowMenu extends javax.swing.JFrame {
         closeAndSaveButton.setBackground(new java.awt.Color(42, 47, 189));
         closeAndSaveButton.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         closeAndSaveButton.setForeground(new java.awt.Color(255, 255, 255));
-        closeAndSaveButton.setText("Salir y Guardar");
+        closeAndSaveButton.setText("Salir");
+        closeAndSaveButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(42, 47, 189)));
         closeAndSaveButton.setBorderPainted(false);
         closeAndSaveButton.setOpaque(true);
         closeAndSaveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +141,7 @@ public class windowMenu extends javax.swing.JFrame {
                 closeAndSaveButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(closeAndSaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 540, 180, 30));
+        jPanel1.add(closeAndSaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 540, 180, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
@@ -219,9 +220,7 @@ public class windowMenu extends javax.swing.JFrame {
      * @param evt El parámetro evt contiene la información del evento llevado a cabo por el usuario.
      */
     private void closeAndSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeAndSaveButtonActionPerformed
-        // TODO add your handling code here:
-        
-        //Cierre del método
+        System.exit(0);
     }//GEN-LAST:event_closeAndSaveButtonActionPerformed
 
     /**

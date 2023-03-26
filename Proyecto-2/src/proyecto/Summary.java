@@ -28,21 +28,6 @@ public class Summary {
     }
 
     /**
-     * Metodo para obtener el string con la informacion de un resumen
-     * @return La cadena con la informacion referida para poder imprimirla
-     */
-    public String print(){
-        
-        String toPrint=getTitle()+"\n";
-        for(int i =0;i<getAuthors().length;i++){
-            toPrint+=getAuthors()[i]+"\n";
-        }
-        return toPrint;
-        
-    }
-    
-    
-    /**
      * @return the title
      */
     public String getTitle() {

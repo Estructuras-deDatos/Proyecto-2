@@ -24,6 +24,7 @@ public class Nodo {
     } //Cierre del constructor
 
     /**
+     * Metodo para obtener la llave que le corresponde a cada Nodo
      * @return the key
      */
     public String getKey() {
@@ -31,6 +32,7 @@ public class Nodo {
     } //Cierre del la función
 
     /**
+     * Metodo para obtener los indices de la Hash Table original que corresponden a la llave
      * @return the index
      */
     public String getIndex() {
@@ -38,6 +40,7 @@ public class Nodo {
     } //Cierre del la función
 
     /**
+     * Metodo para agregar un nuevo indice al nodo
      * @param index the index to set
      */
     public void setIndex(String index) {

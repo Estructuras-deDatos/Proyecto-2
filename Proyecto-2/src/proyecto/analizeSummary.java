@@ -10,9 +10,7 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 import proyecto.interfaces.windowAnalyzeResume;
 
@@ -24,7 +22,7 @@ import proyecto.interfaces.windowAnalyzeResume;
 public class analizeSummary {
     
     /**
-     * 
+     * Metodo para mostrar todos los elementos de la ventana cuando el usuario selecciona un resumen
      * @param sum El resumen que se desea analizar
      */
     public static void visualize(Summary sum){
@@ -38,8 +36,8 @@ public class analizeSummary {
     }
     
     /**
-     * 
-     * @param sum 
+     * Metodo para analizar el resumen seleccionado utilizando un Hash Table
+     * @param sum El resumen que se desea analizar
      */
     public static void analyze_summary(Summary sum){
         visualize(sum);
@@ -52,9 +50,10 @@ public class analizeSummary {
             hash.insert(keyWord, el); 
         } 
         tabulate(hash, sum);
-        
-        
     }
+    /**
+     * Metodo para esconder elementos de la ventana de analizar resumen
+     */
     public static void hide(){
         windowAnalyzeResume.problem.setVisible(false);
         windowAnalyzeResume.jLabel5.setVisible(false);
@@ -62,6 +61,12 @@ public class analizeSummary {
         windowAnalyzeResume.jLabel4.setVisible(false);
         windowAnalyzeResume.jScrollPane3.setVisible(false);
     }
+    
+    /**
+     * Metodo para obtener todos los titulos de los resumenes cargados 
+     * @param hash - Hash Table de resumenes
+     * @return arreglo con todos los titulos de los resumenes
+     */
     public static String[] get_options(Hash hash){
         String t ="";
         Summary aux;
@@ -74,6 +79,11 @@ public class analizeSummary {
         return make_readable(t);
     }
     
+    /**
+     * Metodo para colocar en mayusculas todos los elementos de un string con los elementos separados por comas
+     * @param s
+     * @return arreglo con todos los titulos de los resumenes
+     */
     public static String[] make_readable(String s){
         String[] content = s.split(",");
         for(int i=0; i<content.length;i++){
@@ -88,7 +98,12 @@ public class analizeSummary {
         Arrays.sort(content);
         return content;
     }
-            
+    
+    /**
+     * Metodo para crear una JTable con la informacion de las palabras claves y sus frecuencias
+     * @param hash - Hash table que contiene las palabras claves y sus frecuencias
+     * @param sum - el resumen seleccionado
+     */
     public static void tabulate(Hash hash, Summary sum){
         
         String[] column = {"Palabra Clave", "Frecuencia"};
@@ -96,7 +111,7 @@ public class analizeSummary {
         String[][] row = new String[keys.length][2];
         for(int i=0; i<keys.length;i++){
             int f = search(hash, keys[i]);
-            row[i][0]=keys[i];
+            row[i][0]=uploadSummary.capitalize(keys[i]);
             row[i][1]=String.valueOf(f);
         }
         DefaultTableModel model = new DefaultTableModel(row, column);
@@ -104,10 +119,21 @@ public class analizeSummary {
         windowAnalyzeResume.table.getTableHeader().setFont(new Font("Trebuchet MS", Font.BOLD, 14));
         windowAnalyzeResume.table.getTableHeader().setBackground(new Color(43,47,181));
         windowAnalyzeResume.table.getTableHeader().setForeground(Color.white);
+        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+        center.setHorizontalAlignment(JLabel.CENTER);
+        for(int i=0;i<2;i++){
+            windowAnalyzeResume.table.getColumnModel().getColumn(i).setCellRenderer(center);
+        }
         windowAnalyzeResume.jScrollPane3.setVisible(true);
        
     }
     
+    /**
+     * Metodo para buscar la frequencia de cada palabra clave
+     * @param hash - Hash table de frecuencia
+     * @param key - palabra clave a buscar
+     * @return 
+     */
     public static int search(Hash hash, String key){
         int in = hash.sfold(key, hash.getCapacity());
         Object[] val = hash.getVal();
@@ -123,6 +149,13 @@ public class analizeSummary {
         
         return f;
     }
+    
+    /**
+     * Metodo para encontrar la frecuencia en la que aparece la palabra clave en el resumen
+     * @param key - Palabra clave
+     * @param sum - Resumen seleccionado
+     * @return el numero de frecuencia con la que aparece la palabra clave
+     */
     
     public static int calculate_frequency(String key, Summary sum){
         String body = sum.getBody().toLowerCase();

@@ -6,8 +6,6 @@ package proyecto;
 
 import proyecto.interfaces.windowResumeDetails;
 import proyecto.interfaces.windowSearchByKeywords;
-import static proyecto.interfaces.windowSearchByKeywords.investLabel;
-import static proyecto.interfaces.windowSearchByKeywords.keywordTextField;
 
 /**
  * Esta clase, define funciones necesarias para el registro de las palabras clave almacenadas en cada resumen.
@@ -15,7 +13,9 @@ import static proyecto.interfaces.windowSearchByKeywords.keywordTextField;
  * @version: 22/03/2023
  */
 public class searchByKey {
-    
+    /**
+     * Metodo para esconder los elementos de la interfaz grafica
+     */
     public static void hide(){
         windowSearchByKeywords.fail_message.setVisible(false);
         windowSearchByKeywords.fail_select.setVisible(false);
@@ -25,14 +25,20 @@ public class searchByKey {
         windowSearchByKeywords.jScrollPane1.setVisible(false);
         
     }
-    
+    /**
+     * Metodo para mostrar los elementos de la interfaz grafica
+     */
     public static void show_options(){
         windowSearchByKeywords.investLabel.setVisible(true);
         windowSearchByKeywords.resumeFoundList.setVisible(true);
         windowSearchByKeywords.select.setVisible(true);
         windowSearchByKeywords.jScrollPane1.setVisible(true);
     }
-    
+    /**
+     * Metodo para mostrar los detalles del resumen seleccionado
+     * @param title - el titulo del resumen seleccionado
+     * @param sumHash - HashTable que guarda los resumenes 
+     */
     public static void make_details_visible(String title, Hash sumHash){
         Summary sum =(Summary) uploadSummary.search_sum(title.trim(), sumHash);
         
@@ -41,7 +47,13 @@ public class searchByKey {
         windowResumeDetails.summary_keyw.setText(uploadSummary.array_readable(sum.getKeyw()));
         windowResumeDetails.summary_body.setText(sum.getBody());
     }
-
+    
+    
+    /**
+     * Metodo para mostrar las opciones de resumenes relacionados con la palabra clave buscada
+     * @param keyHash - Hash Table de las palabras claves
+     * @param sumHash - Hash Table que contiene a los resumenes
+     */
     public static void set_options(Hash keyHash, Hash sumHash){
         String key = windowSearchByKeywords.keywordTextField.getText();
         String titles = get_titles(keyHash, key, sumHash);
@@ -56,7 +68,13 @@ public class searchByKey {
         }
     }
     
-    
+    /**
+     * Metodo para obtener los titulos de los resumenes que corresponden a la palabra clave
+     * @param keyHash
+     * @param key
+     * @param sumHash
+     * @return 
+     */
     public static String get_titles(Hash keyHash, String key, Hash sumHash){
         Object[] result = search_exists(keyHash, key);
         boolean exists = (boolean) result[0];
@@ -82,7 +100,12 @@ public class searchByKey {
         }
     }
     
-    
+    /**
+     * Metodo para agregar una nueva palabra clave en el hash table
+     * @param sumHash
+     * @param keyHash
+     * @param newSum 
+     */
     
   
     public static void insert_new(Hash sumHash,Hash keyHash, Summary newSum){
@@ -93,7 +116,12 @@ public class searchByKey {
         }
     }
     
-   
+   /**
+    * Metodo para obtener el indice del resumen en el Hash Table principal
+    * @param key -  llave
+    * @param hash - Hash table de Resumenes
+    * @return indice de la llave dada
+    */
     public static int search_in(String key, Hash hash){
         int found = -1;
         if(!hash.isEmpty()){
@@ -122,6 +150,11 @@ public class searchByKey {
     return found;
     }
     
+    /**
+     * Metodo para crear una Hash Table que contiene como llaves las palabras claves de cada resumen
+     * @param sumH Hash Table de los resumenes
+     * @return la Hash Table creada
+     */
     public static Hash create_hash(Hash sumH){
         int capacity = uploadSummary.get_capacity((sumH.getCapacity()*5));
         Hash keyHash = new Hash(capacity);
@@ -138,6 +171,12 @@ public class searchByKey {
         return keyHash;
     }
     
+    /**
+     * Metodo para revisar si la palabra clave ya esta incluida en el Hash Table
+     * @param keyHash - Hash Table de las palabras claves
+     * @param keyW - llave de la palabra clave
+     * @return 
+     */
     public static Object[] search_exists(Hash keyHash, String keyW){
         keyW = uploadSummary.replace_accents(keyW);
         Object[] result= new Object[2];
@@ -155,7 +194,12 @@ public class searchByKey {
         return result;
     }
     
-    
+    /**
+     * Metodo para insertar un indice en el Hash Table
+     * @param keyHash
+     * @param keyW
+     * @param in 
+     */
     public static void insert_key(Hash keyHash, String keyW, int in){
         Object[] result =search_exists(keyHash,keyW);
         boolean exists = (boolean) result[0];
